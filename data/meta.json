@@ -12,7 +12,8 @@
     },
     "ai_policy_status": {
       "auto": 123,
-      "reviewed": 217
+      "reviewed": 216,
+      "review_stale": 1
     },
     "agent_prs": {
       "not_stated": 277,
