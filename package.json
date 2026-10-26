@@ -14,7 +14,7 @@
     "collect": "node src/collect.ts",
     "build": "node src/build-site.ts",
     "validate": "node src/validate.ts",
-    "test": "node --test test/",
+    "test": "node --test \"test/*.test.ts\"",
     "typecheck": "tsc -p tsconfig.json"
   },
   "devDependencies": {
