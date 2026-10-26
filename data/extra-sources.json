@@ -1,1 +1,30 @@
-{}
+{
+  "PrefectHQ/prefect": [
+    "docs/contribute/dev-contribute.mdx"
+  ],
+  "electron/electron": [
+    "electron/governance:policy/ai.md"
+  ],
+  "git/git": [
+    "Documentation/SubmittingPatches"
+  ],
+  "llvm/llvm-project": [
+    "llvm/docs/AIToolPolicy.md"
+  ],
+  "python/cpython": [
+    "python/devguide:getting-started/ai-tools.rst"
+  ],
+  "qemu/qemu": [
+    "docs/devel/code-provenance.rst"
+  ],
+  "sxyazi/yazi": [
+    "yazi-rs/.github:AI_POLICY.md"
+  ],
+  "torvalds/linux": [
+    "Documentation/process/coding-assistants.rst",
+    "Documentation/process/generated-content.rst"
+  ],
+  "webpack/webpack": [
+    "webpack/governance:AI_POLICY.md"
+  ]
+}

@@ -61,7 +61,7 @@ const SUBDIR_RE = /^(\.github\/pull_request_template|\.claude|docs?\/(contributi
 
 const DOC_EXT = String.raw`(\.(md|markdown|mdx|rst|txt|adoc|asciidoc|org))?`;
 const CONTRIBUTING_RE = new RegExp(String.raw`^(contributing|contribute|contribution[-_]?guide(lines)?|contributors?[-_]guide|hacking|developing|development|governance|code[-_]review|reviewing|submitting[-_]patches)${DOC_EXT}$`, "i");
-const AI_POLICY_RE = new RegExp(String.raw`^(ai|llm|genai|generative[-_]ai|ai[-_]?(policy|policies|guidelines?|usage|use|contributions?|contributing|disclosure|assisted[-_]?contributions?|code[-_]of[-_]conduct)|(llm|ai)[-_]?(policy|usage|guidelines?)|automated[-_]contributions?|tools?[-_]policy)${DOC_EXT}$`, "i");
+const AI_POLICY_RE = new RegExp(String.raw`^(contributing[._-]ai|ai[._-]contributing|(generative[-_])?ai[-_]tools?[-_]policy|ai|llm|genai|generative[-_]ai|ai[-_]?(policy|policies|guidelines?|usage|use|contributions?|contributing|disclosure|assisted[-_]?contributions?|code[-_]of[-_]conduct)|(llm|ai)[-_]?(policy|usage|guidelines?)|automated[-_]contributions?|tools?[-_]policy)${DOC_EXT}$`, "i");
 const AGENTS_RE = /^(agents|agent|claude|gemini|copilot-instructions|\.cursorrules|\.windsurfrules|\.clinerules|conventions)(\.(md|mdc|txt))?$/i;
 const PR_TEMPLATE_RE = /^pull_request_template(\.(md|markdown|txt))?$/i;
 const README_RE = /^readme(\.(md|markdown|rst|txt|adoc|org))?$/i;
@@ -273,7 +273,7 @@ async function fetchFiles(reqs: FileRequest[], log: (m: string) => void): Promis
   let batch: FileRequest[] = [];
   let bytes = 0;
   for (const r of reqs) {
-    if (batch.length > 0 && (bytes + r.size > 600_000 || batch.length >= 20)) {
+    if (batch.length > 0 && (bytes + r.size > 1_000_000 || batch.length >= 40)) {
       batches.push(batch);
       batch = [];
       bytes = 0;
@@ -308,7 +308,7 @@ function cachePath(repo: string): string {
   return join(CACHE_DIR, repo.replace("/", "__") + ".json");
 }
 
-async function readCache(repo: string): Promise<(RepoSnapshot & { extras?: string[] }) | null> {
+async function readCache(repo: string): Promise<(RepoSnapshot & { extras?: string[]; key?: string }) | null> {
   try {
     return JSON.parse(await readFile(cachePath(repo), "utf8")) as RepoSnapshot;
   } catch {
@@ -316,7 +316,7 @@ async function readCache(repo: string): Promise<(RepoSnapshot & { extras?: strin
   }
 }
 
-async function writeCache(s: RepoSnapshot & { extras: string[] }): Promise<void> {
+async function writeCache(s: RepoSnapshot & { extras: string[]; key: string }): Promise<void> {
   await mkdir(CACHE_DIR, { recursive: true });
   await writeFile(cachePath(s.repo), JSON.stringify(s));
 }
@@ -392,16 +392,21 @@ export async function fetchSnapshots(repos: string[], opts: FetchOptions = {}): 
   const orgSnaps = new Map<string, RepoSnapshot>();
   const requests: FileRequest[] = [];
   const reuse = new Map<string, RepoFile[]>();
+  const cacheKeys = new Map<string, string>();
 
   const plan = async (l: Listed, scope: "repo" | "org", extras: string[]) => {
     const snap = toSnapshot(l);
     if (!snap.commit) return snap;
+    // Reuse the cached texts only if the commit, the extra sources and the file choice are all unchanged.
+    const candidates = pickCandidates(l.entries);
+    const key = JSON.stringify([snap.commit, extras, candidates.map((c) => [c.path, c.kind])]);
+    cacheKeys.set(snap.repo, key);
     const cached = await readCache(snap.repo);
-    if (cached && cached.commit === snap.commit && JSON.stringify(cached.extras ?? []) === JSON.stringify(extras)) {
+    if (cached && cached.key === key) {
       reuse.set(snap.repo, cached.files);
       return snap;
     }
-    for (const c of pickCandidates(l.entries)) {
+    for (const c of candidates) {
       requests.push({ repo: snap.repo, commit: snap.commit, path: c.path, kind: c.kind, scope, size: c.size });
     }
     for (const x of extras) {
@@ -454,11 +459,12 @@ export async function fetchSnapshots(repos: string[], opts: FetchOptions = {}): 
   const files = await fetchFiles([...requests, ...crossFiles], log);
   const strip = ({ target: _t, ...f }: FetchedFile): RepoFile => f;
 
-  // Cross-repo files are not cached with the repo: they are re-read every run.
+  // Cross-repo files are re-read every run; the cache keeps the latest copy for --offline runs.
   const assemble = async (snap: RepoSnapshot, extras: string[]) => {
-    const own = reuse.get(snap.repo) ?? files.filter((f) => !f.target && f.repo === snap.repo).map(strip);
-    if (!reuse.has(snap.repo)) await writeCache({ ...snap, files: own, extras });
-    snap.files = [...own, ...files.filter((f) => f.target === snap.repo).map(strip)];
+    const own = reuse.get(snap.repo)?.filter((f) => f.repo === snap.repo) ?? files.filter((f) => !f.target && f.repo === snap.repo).map(strip);
+    const cross = files.filter((f) => f.target === snap.repo).map(strip);
+    snap.files = [...own, ...cross];
+    await writeCache({ ...snap, extras, key: cacheKeys.get(snap.repo) ?? "" });
   };
 
   for (const s of orgSnaps.values()) await assemble(s, []);

@@ -1,1 +1,3537 @@
-{}
+{
+  "alacritty/alacritty": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 162
+      },
+      "oid": "8df0ff4e2c4170c8693b8b2626e031813babb2fe"
+    }
+  },
+  "Alamofire/Alamofire": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI assistance must also be disclosed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 41
+      },
+      "oid": "82a15d6098663be2b2c58416fb62f4260cbb3cb5"
+    }
+  },
+  "ansible/ansible": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "An Assisted-by trailer is recommended, not required.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 31
+      },
+      "oid": "1d6361df34d107f77178f332b6f773e348be5a0a"
+    }
+  },
+  "apache/airflow": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Generated-by line in the PR description.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 29
+      },
+      "oid": "fd2d2832e3883cc31da5eb41270cc63cc0492fcd"
+    }
+  },
+  "apache/spark": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Generated-by line in the PR description.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE",
+        "line": 54
+      },
+      "oid": "c8f6b9a65abea84d25774457d633e672551ce6fe"
+    }
+  },
+  "apollographql/apollo-client": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "Review AI code yourself; open an issue first to agree on a fix (line 215).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 216
+      },
+      "oid": "f8454977b3db15b6151db9f9139153c54d548ed2"
+    }
+  },
+  "astral-sh/ruff": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Autonomous agents are not allowed; AI context in comments must be quoted and disclosed.",
+      "source": {
+        "repo": "astral-sh/.github",
+        "path": "AI_POLICY.md",
+        "line": 5
+      },
+      "oid": "5e74049dd70cf28699f8c8b1be99d9183b65a4c8"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "repo": "astral-sh/.github",
+        "path": "AI_POLICY.md",
+        "line": 18
+      },
+      "oid": "5e74049dd70cf28699f8c8b1be99d9183b65a4c8"
+    }
+  },
+  "astral-sh/uv": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Autonomous agents are not allowed; AI context in comments must be quoted and disclosed.",
+      "source": {
+        "repo": "astral-sh/.github",
+        "path": "AI_POLICY.md",
+        "line": 5
+      },
+      "oid": "5e74049dd70cf28699f8c8b1be99d9183b65a4c8"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "repo": "astral-sh/.github",
+        "path": "AI_POLICY.md",
+        "line": 18
+      },
+      "oid": "5e74049dd70cf28699f8c8b1be99d9183b65a4c8"
+    }
+  },
+  "atuinsh/atuin": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AI agents must end PR descriptions, issues and comments with a fixed disclosure line.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7
+      },
+      "oid": "cca8618be99317982a14a661537678aee5c06256"
+    }
+  },
+  "axios/axios": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "PRs made with AI assistance get the ai-assisted label.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 18
+      },
+      "oid": "d9174e36e57e4fbcc4a81398e8964da05119ac27"
+    }
+  },
+  "babel/babel": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI may help write code; disclose with an Assisted-by tag (line 9).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 11
+      },
+      "oid": "60d3c2a74e31ded7979007a8d4096d387687368a"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden"
+    }
+  },
+  "bevyengine/bevy": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 23
+      },
+      "oid": "b0860562c3dddf54cf971702b162180bdf94918c"
+    }
+  },
+  "biomejs/biome": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI assistance must be disclosed with its extent (line 54).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 71
+      },
+      "oid": "6c227bac63d6fe9506cf4bb1708355d8de713d1e"
+    }
+  },
+  "bokeh/bokeh": {
+    "ai_policy": {
+      "verdict": "needs_review",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The AI contribution guidelines live on the project wiki (BEP-1), which this crawler does not read.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 6
+      },
+      "oid": "3bdd96dd2b4b74a7f9fc70bd99da8603a14624ce"
+    }
+  },
+  "BurntSushi/jiff": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI for coding is welcome (line 3); no autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 8
+      },
+      "oid": "e0ddbaaea002703a06109d82dbf0af7eb9d7153d"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 21
+      },
+      "oid": "e0ddbaaea002703a06109d82dbf0af7eb9d7153d"
+    }
+  },
+  "BurntSushi/ripgrep": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI for coding is welcome (line 3); no autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 8
+      },
+      "oid": "667026958a7753fbf5a3349c4abd76a27cd2ae8c"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 21
+      },
+      "oid": "667026958a7753fbf5a3349c4abd76a27cd2ae8c"
+    }
+  },
+  "BurntSushi/toml": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 1
+      },
+      "oid": "70f58aabd395388dce65f4dac5602e9aa6d37e22"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 7
+      },
+      "oid": "70f58aabd395388dce65f4dac5602e9aa6d37e22"
+    }
+  },
+  "bytecodealliance/wasmtime": {
+    "ai_policy": {
+      "verdict": "needs_review",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Refers to the Bytecode Alliance AI Tool Use Policy, which this crawler does not read; only humans may be commit authors.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 1
+      },
+      "oid": "d94ea857cb524ce2024340504c7e0699e78a7a65"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 3
+      },
+      "oid": "d94ea857cb524ce2024340504c7e0699e78a7a65"
+    }
+  },
+  "caddyserver/caddy": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI-generated code must still meet licensing, comprehension and testing criteria; LLMs must not automate interactions with people.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 8
+      },
+      "oid": "d4ae5a3c2317553a22191f0d6729c7f91880d037"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "AGENTS.md tells agents never to create a PR or an issue.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 206
+      },
+      "oid": "b455cc33bc495a401d756facfc66ba45073919fa"
+    }
+  },
+  "calcom/cal.diy": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Only mentions Copilot PR summaries, which must be checked.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 42
+      },
+      "oid": "da3a67fedb387775929c38dafe1e18b0e192d2a1"
+    }
+  },
+  "Canop/broot": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Mostly-AI code is only welcome after a human discussed the design with the maintainer (AGENTS.md:8).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 2
+      },
+      "oid": "8549ccb366020dbce2cd448f30f2a1ff8aede1b1"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 5
+      },
+      "oid": "88b50342095d5f2177c474c4aba9b76b7a781d93"
+    }
+  },
+  "capricorn86/happy-dom": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Disclose the AI tool used (line 118).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 120
+      },
+      "oid": "d931cbbf584e4482c6454a934c6c12f4b5038061"
+    }
+  },
+  "chen08209/FlClash": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AGENTS.md only forbids Co-authored-by trailers for coding agents (line 58)."
+    }
+  },
+  "chimurai/http-proxy-middleware": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 34
+      },
+      "oid": "035cfedae34870064f5930b94b0f68c8623a26eb"
+    }
+  },
+  "clap-rs/clap": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Some code is off limits for AI even with review (line 48); AI coding needs permission on the issue first (line 40); disclose AI use (line 54).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 14
+      },
+      "oid": "cba9ca1766ac802918e0c10d4a12ab5baa890b35"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 43
+      },
+      "oid": "cba9ca1766ac802918e0c10d4a12ab5baa890b35"
+    }
+  },
+  "clash-verge-rev/clash-verge-rev": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Disclosure is asked when an AI agent produced or co-produced the change.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 20
+      },
+      "oid": "a1b464a17085a15f4e1d5bbf75e24f9ef066af02"
+    }
+  },
+  "ClementTsang/bottom": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI for coding is welcome (line 3).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 7
+      },
+      "oid": "2cae7b76b67028e0270f0d82f713a6050f4882c3"
+    }
+  },
+  "cli/cli": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "The PR template asks who wrote the change.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 66
+      },
+      "oid": "ff417f24e4f58d61e22f2d0c7941fb6203b0ea4d"
+    }
+  },
+  "ClickHouse/ClickHouse": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI use is welcome and does not need to be disclosed (line 5).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 7
+      },
+      "oid": "ccb13153702b39364135b6d5436d046d741f8a37"
+    }
+  },
+  "Comfy-Org/ComfyUI": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Code that reads like generic AI output is rejected.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 25
+      },
+      "oid": "be5cd70add45d4bfe78d1c35b9276952ed446b24"
+    }
+  },
+  "cookiecutter/cookiecutter-django": {
+    "ai_policy": {
+      "verdict": "needs_review",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "No contributor rule found; the cited note is addressed to automated agents. Read it before acting on it.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 71
+      },
+      "oid": "565df2de62d765ca800338880aeb8fdcf6bd7458"
+    }
+  },
+  "coollabsio/coolify": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Low-effort AI PRs are closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 164
+      },
+      "oid": "5fca2d5408a203422075ada84c1ed8d99fd94207"
+    }
+  },
+  "crate-ci/typos": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Same policy as clap: disclosure, permission on the issue, no autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 14
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 43
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    }
+  },
+  "curl/curl": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AI-assisted code is accepted if it meets the usual standards (docs/CONTRIBUTE.md:356).",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 6
+      },
+      "oid": "34e39a217218bea76bea54b271ec1b97bf9249a3"
+    }
+  },
+  "DavidAnson/markdownlint": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 62
+      },
+      "oid": "78626763b9f9bb7e9a3affb27aa1a7ab266c7bbb"
+    }
+  },
+  "deepseek-ai/deepseek-harness": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The PR template has an AI declaration section with per-stage AI involvement.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 20
+      },
+      "oid": "3579e7713642a9aaa6cb162a7d28fd0f71b9e0ac"
+    }
+  },
+  "DefinitelyTyped/DefinitelyTyped": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "Agent-made PRs must carry [auto-generated] in the title.",
+      "source": {
+        "path": "README.md",
+        "line": 18
+      },
+      "oid": "bdc174feaa809346ce229a8dc706cbc9c94ca0c9"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "An agent needs the user's confirmation and may never send multiple PRs (line 17).",
+      "source": {
+        "path": "README.md",
+        "line": 16
+      },
+      "oid": "bdc174feaa809346ce229a8dc706cbc9c94ca0c9"
+    }
+  },
+  "denoland/deno": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/CONTRIBUTING.md",
+        "line": 3
+      },
+      "oid": "60c16527da8b3a7454a2ac34879d15224c3bbaec"
+    }
+  },
+  "django/django": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 10
+      },
+      "oid": "98ec88c7233eb33e85b2cdd16782d91673d60fbd"
+    }
+  },
+  "dubzzz/fast-check": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Everything must be written by you; disclosing AI use can itself get a submission closed (line 24).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 3
+      },
+      "oid": "f117167d8c5b3d2fb90fcb34fc00a26c3e811496"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 5
+      },
+      "oid": "f117167d8c5b3d2fb90fcb34fc00a26c3e811496"
+    }
+  },
+  "duckdb/duckdb": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI for coding is welcome (AI_POLICY.md:3), but CONTRIBUTING.md:133 asks not to submit PRs generated by AI.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 13
+      },
+      "oid": "5b5410adf1affca805840b548714d2bb09c1be65"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 26
+      },
+      "oid": "5b5410adf1affca805840b548714d2bb09c1be65"
+    }
+  },
+  "elastic/elasticsearch": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "LLMs may assist if you add value yourself (line 926); no disclosure rule found.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 103
+      },
+      "oid": "24a47797b5fae0ecb93516259c3fdfbe91a1d06d"
+    }
+  },
+  "electron/electron": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Human in the loop; disclosure is encouraged, not required.",
+      "source": {
+        "repo": "electron/governance",
+        "path": "policy/ai.md",
+        "line": 7
+      },
+      "oid": "4021daa9dd961d4ecdc0d3bff121ab8a00a389e3"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated",
+      "note": "Unauthorized automated agents that open PRs on their own are not allowed.",
+      "source": {
+        "repo": "electron/governance",
+        "path": "policy/ai.md",
+        "line": 32
+      },
+      "oid": "4021daa9dd961d4ecdc0d3bff121ab8a00a389e3"
+    }
+  },
+  "emilk/egui": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "A human must review the code before undrafting the PR; LLM slop may be closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 54
+      },
+      "oid": "a2ce09dcfea0acc8d3422f2d1771dec4409f1df7"
+    }
+  },
+  "etcd-io/etcd": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Points to the Kubernetes AI guidance.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 4
+      },
+      "oid": "43b38bbfe9099583e5cb864374127dcdfa030fd6"
+    }
+  },
+  "facebook/docusaurus": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 221
+      },
+      "oid": "ab9cfd7bc8e3fdf37ffd44744cc166f77756e778"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 143
+      },
+      "oid": "2ef332569fa5865eb003fc3fc03ed76d39221066"
+    }
+  },
+  "facebook/lexical": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AGENTS.md only bans agent-session URLs in commits and PRs."
+    }
+  },
+  "farion1231/cc-switch": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Open an issue first; drive-by AI PRs may be closed (line 220).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 213
+      },
+      "oid": "946ac27c38e08c44c583f96f450d4f0cbdab520c"
+    }
+  },
+  "fastapi/fastapi": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Asks for the prompt and model used.",
+      "source": {
+        "repo": "fastapi/.github",
+        "path": ".github/pull_request_template.md",
+        "line": 20
+      },
+      "oid": "239a48530c413bad5e8d62af1b5846555cb032cc"
+    }
+  },
+  "flutter/flutter": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Review all AI-generated code before a non-draft PR; do not use AI as a substitute for human discussion (line 38).",
+      "source": {
+        "path": "CONTRIBUTING.ai.md",
+        "line": 72
+      },
+      "oid": "bbfe71bcd49d4e620bdf3c23e98945b4a2d2a13d"
+    }
+  },
+  "gentoo/gentoo": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "The PR checklist asks you to confirm no AI tools were used, per Gentoo's AI policy.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 9
+      },
+      "oid": "345edd52b18b8aca3aa60518f9a39d1d3ac6ad3b"
+    }
+  },
+  "geopandas/geopandas": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Also: be upfront about AI use (line 363); AI-generated PRs only for issues with an agreed solution (line 370).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 374
+      },
+      "oid": "02854fc3f7a53136dadeb1add900aa2068a6ceb1"
+    }
+  },
+  "georust/geo": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 26
+      },
+      "oid": "cbe2a3c980a62a63383af90ab08f7215a86d45eb"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 23
+      },
+      "oid": "cbe2a3c980a62a63383af90ab08f7215a86d45eb"
+    }
+  },
+  "getzola/zola": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "LLM-written documentation is not accepted either; LLM-written code needs human review.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 38
+      },
+      "oid": "84a1dc81b823b2ec624f6ad1475bd26ea07eeebc"
+    }
+  },
+  "gfx-rs/wgpu": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 30
+      },
+      "oid": "390971cd321382f728f18d8bd8678565c06253a4"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 35
+      },
+      "oid": "5f8a888b920b0d0f8fcafa1863ccbb5b284f97af"
+    }
+  },
+  "ggml-org/llama.cpp": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI-generated code is allowed with explicit disclosure (line 21) and a thorough manual review.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 25
+      },
+      "oid": "59ec3f311b5d9de3d47db3369a9f1c779edab071"
+    }
+  },
+  "ghostty-org/ghostty": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "You must fully understand the code; AI text in issues must be human-edited; no AI-generated media.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 5
+      },
+      "oid": "ab878c41e2e8d6a2006a6161992b2890ee757bea"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 37
+      },
+      "oid": "8a5254889f142a47d620914f3be4eaba3557fe21"
+    }
+  },
+  "git/git": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI may help with debugging and checking (line 594), but content that looks AI-generated is rejected; significant AI-generated content may not satisfy the DCO.",
+      "source": {
+        "path": "Documentation/SubmittingPatches",
+        "line": 584
+      },
+      "oid": "c60855f7069492895111893a9b1a1a55f1e6ad12"
+    }
+  },
+  "gitpython-developers/GitPython": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "AI attribution is welcome but not required.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 47
+      },
+      "oid": "fa3d6bc3980e9a3e556ff713e56714a9ca63826c"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated",
+      "note": "Agents writing through a person's account must identify themselves (CONTRIBUTING.md:35)."
+    }
+  },
+  "gleam-lang/gleam": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 51
+      },
+      "oid": "818907ff4982283989fa4d5531b0249bfe933f96"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 51
+      },
+      "oid": "818907ff4982283989fa4d5531b0249bfe933f96"
+    }
+  },
+  "go-gitea/gitea": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Do not use AI to reply to questions about your issue or PR (line 61).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 55
+      },
+      "oid": "fef7ded677d9bdcadc698bdf9e0001e60e3eed73"
+    }
+  },
+  "go-task/task": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Disclose AI use (line 21).",
+      "source": {
+        "repo": "go-task/.github",
+        "path": "CONTRIBUTING.md",
+        "line": 24
+      },
+      "oid": "1e785db429b54b8d5c6f973eea8e3c8e0ad2ab48"
+    }
+  },
+  "godotengine/godot": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 7
+      },
+      "oid": "e13117a1b830673fc0b2d8e85bb813d3e58adae4"
+    }
+  },
+  "gohugoio/hugo": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 84
+      },
+      "oid": "13db2dc5628562b4ea8172d250c3cd598606d19b"
+    }
+  },
+  "google/zx": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The PR must not be solely generated by AI tools.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 16
+      },
+      "oid": "67ca443dd708fdea2f6f60a2aecfa172f1319508"
+    }
+  },
+  "gradio-app/gradio": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Outside PRs are paused (CONTRIBUTING.md:10).",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 9
+      },
+      "oid": "9be9432829f400af8a6289621f622832756baff4"
+    }
+  },
+  "grafana/grafana": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "You own the result: review, test and understand it; keep PRs small.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 28
+      },
+      "oid": "dc39d1af285b9cfdc21d1ad95e45526783d94eeb"
+    }
+  },
+  "grpc/grpc": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 31
+      },
+      "oid": "25be62817461a98e6038014bc86f510ecb9bad7e"
+    }
+  },
+  "grpc/grpc-rust": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 39
+      },
+      "oid": "825932e1fbb55490745baf9f4ef57cf9eced3967"
+    }
+  },
+  "hashicorp/terraform": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Say what role AI played in the PR description.",
+      "source": {
+        "path": ".github/CONTRIBUTING.md",
+        "line": 320
+      },
+      "oid": "0711cac51af6b7feed6879fb78c86134bff06ffb"
+    }
+  },
+  "holoviz/panel": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "repo": "holoviz/.github",
+        "path": ".github/pull_request_template.md",
+        "line": 10
+      },
+      "oid": "584bedcad1c11563bbdb7ed2124fb9afa591747c"
+    }
+  },
+  "home-assistant/core": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI help with writing is fine (line 13); answers to maintainers must be your own.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 17
+      },
+      "oid": "5f41cfd16dce597db08bedd01285082c3a819a38"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 9
+      },
+      "oid": "5f41cfd16dce597db08bedd01285082c3a819a38"
+    }
+  },
+  "Homebrew/brew": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Do not attribute commits to AI.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 29
+      },
+      "oid": "38a58878c613a719403bc4aa59abf16c71fd7487"
+    }
+  },
+  "huggingface/transformers": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "First-time contributors must confirm that the PR description and code are not written by an LLM or agent (PR template line 31).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 223
+      },
+      "oid": "972c62be912e12ffe795678b9b8c5d3230286f2d"
+    }
+  },
+  "hyperium/hyper": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "repo": "hyperium/.github",
+        "path": ".github/PULL_REQUEST_TEMPLATE",
+        "line": 1
+      },
+      "oid": "0333c4d69f375995ece61a68aca1b343de369147"
+    }
+  },
+  "HypothesisWorks/hypothesis": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Mark AI-written content as such.",
+      "source": {
+        "path": "CONTRIBUTING.rst",
+        "line": 25
+      },
+      "oid": "99b8060914e18f8b793712b561d45691d66a5c5a"
+    }
+  },
+  "iina/iina": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 45
+      },
+      "oid": "c4aef1068fa57ba457cd8c1a2e9ed68be5bb1142"
+    }
+  },
+  "immich-app/immich": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "LLM-written descriptions and comments are not acceptable either (line 28); translation is fine.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 26
+      },
+      "oid": "ee9cc94f074fd0df65a1023f10592ccfaac7b2dd"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated",
+      "note": "Implied by the request not to open LLM-generated PRs.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 26
+      },
+      "oid": "ee9cc94f074fd0df65a1023f10592ccfaac7b2dd"
+    }
+  },
+  "jdx/mise": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI replies to discussions and issues are restricted to people with a stake in them (CONTRIBUTING.md:8).",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 19
+      },
+      "oid": "0b91186f51acf328095f204ead1485c0cafb5cd3"
+    }
+  },
+  "jellyfin/jellyfin": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The PR template asks how code assistance was used.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 9
+      },
+      "oid": "d6833ea2be26d618f837a25eb783acf0b16c2f15"
+    }
+  },
+  "jesseduffield/lazygit": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The project does not accept pull requests at all (CONTRIBUTING.md:5)."
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7
+      },
+      "oid": "ea4374c532cb2180fbe23c1fd04bf8c880107245"
+    }
+  },
+  "jline/jline3": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "No contributor rule; CLAUDE.md tells agents not to add AI attribution to PR descriptions."
+    }
+  },
+  "joke2k/faker": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 15
+      },
+      "oid": "bb41df940f1930e786e01cf2fd2fb9f4186a9ba3"
+    }
+  },
+  "junegunn/fzf": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "PRs generated primarily by AI without real understanding or real-world usage are not accepted.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 3
+      },
+      "oid": "64dc144ea066f3a0106f8c9417a8680d291e7d84"
+    }
+  },
+  "jupyterlab/jupyterlab": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AI use goes in the PR's \"AI usage\" section; contributions made with AI are welcome (line 5).",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 115
+      },
+      "oid": "504ed16066ee787237dba4484bbb5be152bbdec5"
+    }
+  },
+  "keras-team/keras": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 329
+      },
+      "oid": "f7fa0b446135c59867f8b61d731e229ff67191e8"
+    }
+  },
+  "killercup/cargo-edit": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Same policy as clap: disclosure, permission on the issue, no autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 14
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 43
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    }
+  },
+  "kivikakk/comrak": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "Exception: LLM-written private vulnerability reports.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 21
+      },
+      "oid": "14b092ac6a41898703d9c09325929ff97ca928af"
+    }
+  },
+  "Kludex/uvicorn": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Duplicate PRs lead to a ban.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 3
+      },
+      "oid": "4c3cb5406a15556995d5ff0315cf99e2cb6b5554"
+    }
+  },
+  "kubernetes/kubernetes": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 63
+      },
+      "oid": "dbe24b8edee723d5b22a38b87ea89b9c7ed8995a"
+    }
+  },
+  "kysely-org/kysely": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Issue first and assignment are required.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 126
+      },
+      "oid": "9ead856d4b183b47f887a59b081b9106ff91fd6e"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 96
+      },
+      "oid": "9ead856d4b183b47f887a59b081b9106ff91fd6e"
+    }
+  },
+  "langgenius/dify": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 78
+      },
+      "oid": "1b304d2b9d5dc145fc7fb0bda9435fbcd9333352"
+    }
+  },
+  "leptos-rs/leptos": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "Contributions of any kind are allowed with guidelines (line 9); for bugs, open an issue first.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 16
+      },
+      "oid": "0f4040b92fe5b0697d9b75e365413402aee05c40"
+    }
+  },
+  "lint-staged/lint-staged": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 5
+      },
+      "oid": "b97185f56829b2b9898f8e3a4c66f179763b7fa3"
+    }
+  },
+  "llvm/llvm-project": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Human in the loop; no AI for good first issues (line 56).",
+      "source": {
+        "path": "llvm/docs/AIToolPolicy.md",
+        "line": 21
+      },
+      "oid": "d9cbe50f714b8532551aaf6566afe0044c55d3b1"
+    }
+  },
+  "localsend/localsend": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Exceptions: bug fixes, very small changes, or proven expertise.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 5
+      },
+      "oid": "d8db2252a24789e0fd9ad3841a33bbb52bbba112"
+    }
+  },
+  "louislam/uptime-kuma": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "No vibe coding; unreviewed AI code with an LLM-written description gets a ban (AGENTS.md:20).",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 24
+      },
+      "oid": "a2121b3eeee4cf80e569edb4f1d43f7a31259a8d"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed"
+    }
+  },
+  "lysine-dev/okhttp": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 21
+      },
+      "oid": "8ba57673bbff2141903eacada822a6da105cf851"
+    }
+  },
+  "lysine-dev/okio": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 17
+      },
+      "oid": "66d063c4a52734ec43f2e77d0f4c86f4aa501ebe"
+    }
+  },
+  "lysine-dev/retrofit": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 17
+      },
+      "oid": "d493c139a31137497705bc1f5fbeb84994d8508c"
+    }
+  },
+  "marimo-team/marimo": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "The human author must review AI-generated code line by line.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 14
+      },
+      "oid": "a3ace1b66b3a52f34416f9179f70bb80dce29a12"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 51
+      },
+      "oid": "dbbf58430b78d1e8ffc5a213fba1ab966cf7f23f"
+    }
+  },
+  "markdown-it/markdown-it": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The submitter must remain the author, not a proxy.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 32
+      },
+      "oid": "9fa20763f31408bc1ac89e0a6bb4a4b508072db2"
+    }
+  },
+  "mastodon/mastodon": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Significant AI use must be disclosed in the PR description.",
+      "source": {
+        "repo": "mastodon/.github",
+        "path": "AI_POLICY.md",
+        "line": 26
+      },
+      "oid": "3ff03eefc0b0b30b784c67cb2614eb2723b66e3a"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "repo": "mastodon/.github",
+        "path": "AI_POLICY.md",
+        "line": 22
+      },
+      "oid": "3ff03eefc0b0b30b784c67cb2614eb2723b66e3a"
+    }
+  },
+  "matplotlib/matplotlib": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "The template also has an AI disclosure section (line 10).",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 6
+      },
+      "oid": "bc11ed56927a3cc4139f5c5f5da116d30e62b931"
+    }
+  },
+  "mesonbuild/meson": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "AI-written PR descriptions, commit messages, issue text and replies are banned.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 23
+      },
+      "oid": "98397be0a6535403c0b06fb85fb9e8f553e66ce1"
+    }
+  },
+  "microsoft/playwright": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Low-quality AI PRs, or PRs without human oversight, are closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 15
+      },
+      "oid": "7e1c6d1b3cc0da177e23732c627903d642e32928"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "Agentic submissions without human oversight are closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 15
+      },
+      "oid": "7e1c6d1b3cc0da177e23732c627903d642e32928"
+    }
+  },
+  "microsoft/PowerToys": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AI-generated text only inside a labelled, collapsed section.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 63
+      },
+      "oid": "98ee994907010a1b10d5f958af81838d8b42db3d"
+    }
+  },
+  "microsoft/terminal": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI code only for small fixes, with major human input, or disclosed and permitted by a maintainer (lines 18-21).",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 26
+      },
+      "oid": "c4b9c7ec58db9ff22383410a9414d16a000d2b2b"
+    }
+  },
+  "microsoft/TypeScript": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 5
+      },
+      "oid": "462f0e44e9fef58282061a67a3f4bf1eb9e75e61"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 7
+      },
+      "oid": "462f0e44e9fef58282061a67a3f4bf1eb9e75e61"
+    }
+  },
+  "mikefarah/yq": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Agents must say that an AI wrote the content.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7
+      },
+      "oid": "23a62bffacd3b0dd6e43e417628a66b7c963be53"
+    }
+  },
+  "mitchellh/vouch": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Only vouched users can open PRs.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 8
+      },
+      "oid": "767daf9a73e02f3625a2ff1357a747cbb7860090"
+    }
+  },
+  "moby/moby": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "A human must read and edit anything AI helped produce (line 18).",
+      "source": {
+        "repo": "moby/.github",
+        "path": "AI_POLICY.md",
+        "line": 7
+      },
+      "oid": "73b318169ec55c57302ef616b080727b2fea9258"
+    }
+  },
+  "mochajs/mocha": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Manual review required; keep AI-generated descriptions short.",
+      "source": {
+        "path": ".github/CONTRIBUTING.md",
+        "line": 133
+      },
+      "oid": "be923b420bc6ce535cf56d05598a8d9434a9311f"
+    }
+  },
+  "morpheus65535/bazarr": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Development must be human-led.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 90
+      },
+      "oid": "589b8b6205ea9d5e25f51b3135d53fa69ff25839"
+    }
+  },
+  "n8n-io/n8n": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Disclosure is encouraged; AI-assisted features still need an accepted issue first.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 594
+      },
+      "oid": "df6e8c6c7262338531b5f59f1eeedba18eab6f14"
+    }
+  },
+  "NationalSecurityAgency/ghidra": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Only a rule about AI-generated unit tests.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 40
+      },
+      "oid": "eccc3afec9a33b2ef220f49700d39bb343f9ccc1"
+    }
+  },
+  "neovim/neovim": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Review the output before a non-draft PR; AGENTS.md asks agents to disclose.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 71
+      },
+      "oid": "fe72f2c81e3f5ffda0ff55c773e20352a313a510"
+    }
+  },
+  "NixOS/nixpkgs": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Assisted-by trailer required; a responsible person must review everything; no unreviewed vibe coding.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 931
+      },
+      "oid": "bee2e5675ea8fa1260ca36d6a7e4b35b2ba41205"
+    }
+  },
+  "nodeca/js-yaml": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The submitter must remain the author, not a proxy.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 14
+      },
+      "oid": "0b42a67c832dcd8f1cbb488ddc4c70db8faa42d4"
+    }
+  },
+  "nodejs/node": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Assisted-by annotation; replies to review must not be automated; no AI for good first issues.",
+      "source": {
+        "path": "doc/contributing/ai-guidelines.md",
+        "line": 18
+      },
+      "oid": "f83c573d6cd1159aa5b775821da021c3f5dba035"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 15
+      },
+      "oid": "0e00d2fc5496242333d9ae532ed8e3305c9ea32b"
+    }
+  },
+  "Nukesor/comfy-table": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "No large AI-written changes or AI-written comments.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 3
+      },
+      "oid": "7a260673c2b4fcb9c31ed5f6bb0ebf4df1951c07"
+    }
+  },
+  "Nukesor/pueue": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "No large AI-written changes or AI-written comments (line 16).",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 24
+      },
+      "oid": "6a29cbfb488419105c2e800b940ec216dede8615"
+    }
+  },
+  "numpy/numpy": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 30
+      },
+      "oid": "07403042dbe4709c7234f68576f1e7aa6ec803af"
+    }
+  },
+  "nushell/nushell": {
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 23
+      },
+      "oid": "a8982ceb81233915b6b0bdda040fe10290783509"
+    }
+  },
+  "nuxt-modules/i18n": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 75
+      },
+      "oid": "66952afbbaa3cf5328a0a8950f8e00b798160386"
+    }
+  },
+  "nuxt/nuxt": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 51
+      },
+      "oid": "18c891631bfcb6f0f54a908036419aba767ba2bf"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7
+      },
+      "oid": "f061f9401a3d86895995f199b9dfe87c4e9203f8"
+    }
+  },
+  "nuxt/ui": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review"
+    }
+  },
+  "o2sh/onefetch": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "AI content must be reviewed by a human before submission.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 9
+      },
+      "oid": "a2632d6cd89844c707fcc4199203c19d7756d7d0"
+    }
+  },
+  "obsproject/obs-studio": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "repo": "obsproject/.github",
+        "path": "pull_request_template.md",
+        "line": 40
+      },
+      "oid": "195065a2c6605ac4864bb3ec1c5f6b1a535db394"
+    }
+  },
+  "ocornut/imgui": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "Only submit code you reviewed and understand.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 9
+      },
+      "oid": "998b2542741c685cad20e24df7c68a6e312574df"
+    }
+  },
+  "ohmyzsh/ohmyzsh": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 135
+      },
+      "oid": "5168cdeaf92c799d3b4bd25962971a8e54288eed"
+    }
+  },
+  "openclaw/openclaw": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "No AI label or disclosure is required (line 215).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 213
+      },
+      "oid": "c153196ea954c598485179cd804fbfb859f02c84"
+    }
+  },
+  "opencv/opencv": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The PR template asks automated agents to mark their PR titles (line 13)."
+    }
+  },
+  "openssl/openssl": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 110
+      },
+      "oid": "e4ade85d9bf5efd75f44c0a2ebf08fa6937d7474"
+    }
+  },
+  "pandas-dev/pandas": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Tool, model version and effort setting must be named.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 10
+      },
+      "oid": "af6988c0e5b1405529736ae3add31d5037a68cad"
+    }
+  },
+  "pest-parser/pest": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 47
+      },
+      "oid": "4fcfe10188d097e74b2a0bf589abe4a833277cfd"
+    }
+  },
+  "PrefectHQ/prefect": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Low-effort, likely AI-generated PRs may be closed (line 58).",
+      "source": {
+        "path": "docs/contribute/dev-contribute.mdx",
+        "line": 45
+      },
+      "oid": "408cdcc38c986fde0625fd36d93c8b975d574c2b"
+    }
+  },
+  "prettier/prettier": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Low-quality AI content is closed immediately.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 18
+      },
+      "oid": "7852bbf976d2dc072490948ef1143420d46a30dd"
+    }
+  },
+  "prisma/orm": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 120
+      },
+      "oid": "73bf0b692fad1742fb8d588a01e9971842521021"
+    }
+  },
+  "psf/requests": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "LLM tools are not policed (line 3); no LLM co-authors.",
+      "source": {
+        "path": ".github/AI_POLICY.md",
+        "line": 68
+      },
+      "oid": "a2980113cf323122d8bd9a1f9d023f0514b8a233"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": ".github/AI_POLICY.md",
+        "line": 18
+      },
+      "oid": "a2980113cf323122d8bd9a1f9d023f0514b8a233"
+    }
+  },
+  "pydata/xarray": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 19
+      },
+      "oid": "642c295e409d56f221ed44d6691527f2e2e3d610"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 55
+      },
+      "oid": "eee8971d732578c0bb36d0e41a88e36519439196"
+    }
+  },
+  "pydicom/pydicom": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "AI-only PRs are closed.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 1
+      },
+      "oid": "6c2749a40026f1bd03000eff4a566a4204a29c74"
+    }
+  },
+  "PyO3/pyo3": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The PR template asks not to submit unsolicited AI-generated PRs (line 18); disclosure is preferred.",
+      "source": {
+        "path": "Contributing.md",
+        "line": 28
+      },
+      "oid": "27ab026b570d2d61e31297231b5b1029d4efbec7"
+    }
+  },
+  "pytest-dev/pytest": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "AI agents must be credited in Co-authored-by trailers.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 17
+      },
+      "oid": "ab9e1640d0680d262b899b28516db021d045d958"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.rst",
+        "line": 213
+      },
+      "oid": "92c40c208dda489ca57db8a88121c8625b4285ef"
+    }
+  },
+  "python/cpython": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Disclosure is appreciated but not required (line 24).",
+      "source": {
+        "repo": "python/devguide",
+        "path": "getting-started/ai-tools.rst",
+        "line": 18
+      },
+      "oid": "cd69987ca200b3a3d8123b90e27ed63737e032c6"
+    }
+  },
+  "python/mypy": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Disclosure is recommended, not required; mostly-LLM PRs from new contributors are closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 130
+      },
+      "oid": "0285601543b5549a57aa07ca8583403ae2201af1"
+    }
+  },
+  "pytorch/pytorch": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI content in comments, issues or PRs must be disclosed and contained; no fully autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 5
+      },
+      "oid": "d48b9800742338837e2f47123fe2946228aeda59"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 30
+      },
+      "oid": "d48b9800742338837e2f47123fe2946228aeda59"
+    }
+  },
+  "qax-os/excelize": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": ".github/CONTRIBUTING.md",
+        "line": 66
+      },
+      "oid": "47d5fd0510078f874208387fc1f8dc27f150b626"
+    }
+  },
+  "qemu/qemu": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "AI for research, static analysis or debugging is fine if its output is not included (line 297).",
+      "source": {
+        "path": "docs/devel/code-provenance.rst",
+        "line": 293
+      },
+      "oid": "65b8f232a08f6bc903c77fd0b1f7a5adad9fbe5d"
+    }
+  },
+  "quinn-rs/quinn": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI for coding is welcome (line 20).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 24
+      },
+      "oid": "e016e71ced79fbdf52277a8e0e22d799de24d107"
+    }
+  },
+  "ratatui/ratatui": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 14
+      },
+      "oid": "6ddfe7274027beecf88e82278b756c4bdf5d5c32"
+    }
+  },
+  "rclone/rclone": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "You must understand, compile and test every line.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 118
+      },
+      "oid": "845546f5d7afbd532bfab1a2f71817b2dd85d2cf"
+    }
+  },
+  "redis-rs/redis-rs": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 52
+      },
+      "oid": "6dfc97e94296ca4761432fc533616613b60290bb"
+    }
+  },
+  "remix-run/react-router": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Only meeting notes about AI-generated PRs (GOVERNANCE.md:511)."
+    }
+  },
+  "revive-lint/revive": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review"
+    }
+  },
+  "ruffle-rs/ruffle": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "LLM-generated code is allowed under a policy based on LLVM's (line 334).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 340
+      },
+      "oid": "a0f4052bd845b2f2decc1705d57f86f18ac22a55"
+    }
+  },
+  "run-llama/llama_index": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 120
+      },
+      "oid": "67ad3c45a82a5a84134d5bce4d0bf688422b152e"
+    }
+  },
+  "rust-lang/cargo": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Follows rust-lang/rust's LLM usage policy.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 23
+      },
+      "oid": "8cde956c3a21c7ca98f267838271c92c256813ab"
+    }
+  },
+  "rust-lang/rust": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Held to a higher standard; per AGENTS.md, LLM-generated changes need a reviewer who agreed in advance.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 2
+      },
+      "oid": "8abe1d818de1cc1eea07968073f936436b32ea32"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated",
+      "note": "Agents may only make changes that a named person agreed in advance to review.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 106
+      },
+      "oid": "ce36bada00558382adec44b3bbec402c5e96de45"
+    }
+  },
+  "rust-lang/rust-analyzer": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Disclose AI use (line 4); no AI-authored code for E-easy issues.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 6
+      },
+      "oid": "59db4a07b4fb5c9f766e653984dbd0a614edd498"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 16
+      },
+      "oid": "59db4a07b4fb5c9f766e653984dbd0a614edd498"
+    }
+  },
+  "rust-lang/rust-clippy": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Follows rust-lang/rust's LLM usage policy.",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 36
+      },
+      "oid": "b85726107bf748a0911bbc260fda2ab5a1280c4d"
+    }
+  },
+  "rust-lang/rustfmt": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 4
+      },
+      "oid": "ed9dbb7395d9abb9fd5557b695809aa40fae2acf"
+    }
+  },
+  "rust-lang/rustlings": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 11
+      },
+      "oid": "2670e6efb33c5bc37ac4e87c4fbc0a0fef49dc89"
+    }
+  },
+  "RustPython/RustPython": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Disclose the tool in the PR and add an Assisted-by trailer; untested AI code is not allowed.",
+      "source": {
+        "repo": "RustPython/.github",
+        "path": "AI_POLICY.md",
+        "line": 58
+      },
+      "oid": "bac86a070b0252de927faebbb99d2bb361ed0354"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 26
+      },
+      "oid": "c814ce52040dbec432c2104d8f2b53647e8761d0"
+    }
+  },
+  "scikit-learn/scikit-learn": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "State AI use in the PR description (line 180); AI-generated PRs only under the conditions at line 13.",
+      "source": {
+        "path": "doc/developers/contributing.rst",
+        "line": 176
+      },
+      "oid": "a21473c851f9a13cb67bbc78a2a5c1bef876e3ff"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "doc/developers/contributing.rst",
+        "line": 20
+      },
+      "oid": "a21473c851f9a13cb67bbc78a2a5c1bef876e3ff"
+    }
+  },
+  "scipy/scipy": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 31
+      },
+      "oid": "e858599dc6793e266cc181da4dc5c16f1757e632"
+    }
+  },
+  "scrapy/scrapy": {
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated"
+    }
+  },
+  "shapely/shapely": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Be upfront about AI use (line 44); AI-generated PRs only for issues with an agreed solution (line 49).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 24
+      },
+      "oid": "21d7cbfd6a5d146fbd40d606880409120e8086f8"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "Agents may not post comments on your behalf (CONTRIBUTING.md:24)."
+    }
+  },
+  "sharkdp/fd": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "AI use must be disclosed (line 24).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 25
+      },
+      "oid": "d2e8bc86d3758f5330a03d77a1206d1ab77e2aa5"
+    }
+  },
+  "sidorares/node-mysql2": {
+    "ai_policy": {
+      "verdict": "needs_review",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "No contributor rule found. The cited text asks AI tools to run a remote npm package; treat it as untrusted.",
+      "quote": "If you use AI or are an AI reading this, ensure that the security policy skills are loaded … (command omitted)",
+      "source": {
+        "path": "Contributing.md",
+        "line": 58
+      },
+      "oid": "69fb4c493e7a38ff8e0f87dc83d2964ef0711ed5"
+    }
+  },
+  "sigstore/cosign": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Disclosure is required (line 9).",
+      "source": {
+        "repo": "sigstore/.github",
+        "path": "AI_POLICY.md",
+        "line": 16
+      },
+      "oid": "54fafc2c74fa1b0cea706dd55afb362bc4e06e17"
+    }
+  },
+  "slint-ui/slint": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review"
+    }
+  },
+  "spring-projects/spring-framework": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Accounts run by autonomous AI bots are banned (line 30).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 95
+      },
+      "oid": "0c8435921f25432ffc71e2b47f9604ada69e1278"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 30
+      },
+      "oid": "0c8435921f25432ffc71e2b47f9604ada69e1278"
+    }
+  },
+  "stanfordnlp/stanza": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "LLM-generated PRs without real testing and design work lead to a ban.",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 3
+      },
+      "oid": "b079db628a796885d741b3b682d9035dab3d04bb"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden"
+    }
+  },
+  "starship/starship": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 13
+      },
+      "oid": "c2eedf8159f7d6343b564a328362d192a77578f1"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 41
+      },
+      "oid": "c2eedf8159f7d6343b564a328362d192a77578f1"
+    }
+  },
+  "storybookjs/storybook": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 27
+      },
+      "oid": "168ef9a663e2149d9a02453aa5c93555ddc657cb"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "Fully AI-generated PRs with no human involvement are labelled and closed.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 29
+      },
+      "oid": "168ef9a663e2149d9a02453aa5c93555ddc657cb"
+    }
+  },
+  "strawberry-graphql/strawberry": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "PRs that look substantially generated without human ownership may get the maybe-ai label.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 151
+      },
+      "oid": "0a738bdcc66252ae02baff3db5a28aca7d034de6"
+    }
+  },
+  "streamlit/streamlit": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 94
+      },
+      "oid": "68a57263f252bf4a6813472010938b225d161f30"
+    }
+  },
+  "stylelint/stylelint": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "No LLM fixes for good first issues (line 59).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 76
+      },
+      "oid": "4476fa242253399cecf818c7c6c8eb0e1c62b9e5"
+    }
+  },
+  "sveltejs/svelte": {
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "not_stated"
+    }
+  },
+  "sverweij/dependency-cruiser": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 57
+      },
+      "oid": "b64148dc59b7968e9a10c37ebc977bb6b98afe8a"
+    }
+  },
+  "sxyazi/yazi": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Disclose any AI use; get maintainer approval in an issue before opening a PR.",
+      "source": {
+        "repo": "yazi-rs/.github",
+        "path": "AI_POLICY.md",
+        "line": 4
+      },
+      "oid": "1fb5f6dbfc34e938376267d718cec8bed227f4c1"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 24
+      },
+      "oid": "c9308c408d51c8bde97ca2eba61312f82ad70ca6"
+    }
+  },
+  "sympy/sympy": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI-generated code or text must be disclosed with the tool and lines (line 36).",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 6
+      },
+      "oid": "8a9bb24eab237c352a390674d0bf3ff5464cd286"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "AGENTS.md assumes a human opens the PR but has no explicit rule."
+    }
+  },
+  "syncthing/syncthing": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Wholly or mostly AI-generated contributions are not accepted (line 36).",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 9
+      },
+      "oid": "ee866c8a2f52d9eb8e3a337333da168cacd3a317"
+    }
+  },
+  "systemd/systemd": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Do not list AI tools as authors or co-authors.",
+      "source": {
+        "path": "docs/CONTRIBUTING.md",
+        "line": 55
+      },
+      "oid": "b2fe2d0f9d1668cfc58a84b1e52bf185d08880ab"
+    }
+  },
+  "tafia/quick-xml": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 27
+      },
+      "oid": "03a69bc88cb58a0be177dd13c2d3a5a9c7157cd8"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden"
+    }
+  },
+  "TanStack/query": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 9
+      },
+      "oid": "5aaa6977a50e69780db8ee4fc098cb494bf6e909"
+    }
+  },
+  "tauri-apps/tauri": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": ".github/CONTRIBUTING.md",
+        "line": 114
+      },
+      "oid": "a30e677d0327f66174792b3bb7774c88edef95d2"
+    }
+  },
+  "Textualize/rich": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "AI-generated PRs only after the maintainer responded on an issue or discussion (PR template line 34).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 1
+      },
+      "oid": "61cf773ad6e07790de9865bdd94e979f2d810afc"
+    }
+  },
+  "tldraw/tldraw": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "AGENTS.md only asks agents not to add AI attribution."
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden"
+    }
+  },
+  "toeverything/AFFiNE": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 19
+      },
+      "oid": "0f2c46276893e9fd99792903273a45dc23137712"
+    }
+  },
+  "toml-rs/toml": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Same policy as clap: disclosure, permission on the issue, no autonomous agents.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 14
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 43
+      },
+      "oid": "b2ad65fd2e8cfd46258f4e1ff66386d63dea2ae6"
+    }
+  },
+  "topgrade-rs/topgrade": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Do not vibe-code entire PRs (CONTRIBUTING.md:17).",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 15
+      },
+      "oid": "836f91463af669607c895eeef9fd47384d1edb91"
+    }
+  },
+  "torvalds/linux": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Be transparent about tool-generated content in changelogs; AI agents must not add Signed-off-by. Patches go to the mailing lists, not GitHub.",
+      "source": {
+        "path": "Documentation/process/generated-content.rst",
+        "line": 72
+      },
+      "oid": "aad2caad9f8b9361c3fecf68db157f760c58ae90"
+    }
+  },
+  "traefik/traefik": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Assisted-by trailer for substantial AI help (line 107); align with a maintainer before larger changes.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 108
+      },
+      "oid": "377005d22f6ed4206ab83b876ee9eaf0b45f537d"
+    }
+  },
+  "transact-rs/sqlx": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI is not expressly prohibited, but AI-written descriptions or replies, AI-attributed commits and visible AI hallmarks can get a PR refused.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 16
+      },
+      "oid": "a21ca92df03e73c49a27d321376946d5052f4039"
+    }
+  },
+  "tree-sitter/tree-sitter": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 6
+      },
+      "oid": "f83d55adf72a1b340d043263a735f7f4c72b54fe"
+    }
+  },
+  "tursodatabase/turso": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 23
+      },
+      "oid": "4c32df833b5e010c14bd5b253160bc5bf01f8c24"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed"
+    }
+  },
+  "twentyhq/twenty": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "CLAUDE.md only bans AI attribution in commit messages."
+    }
+  },
+  "twpayne/chezmoi": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 5
+      },
+      "oid": "c85c64b6e2882ea4a391441170c38e239d4b3cf8"
+    }
+  },
+  "typescript-eslint/typescript-eslint": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "docs/contributing/AI_Contribution_Policy.mdx",
+        "line": 17
+      },
+      "oid": "0e387f8ccd9f718609bf371bd47d90c27956f36f"
+    }
+  },
+  "typst/typst": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 33
+      },
+      "oid": "27179d9102efb4e2063c7aa057ffdc78fe993d30"
+    }
+  },
+  "usebruno/bruno": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "source": {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "line": 23
+      },
+      "oid": "fe71f040a1bcb45ae1e38a6d473321f118c02987"
+    }
+  },
+  "uutils/coreutils": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Output must not be derived from GPL code.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 220
+      },
+      "oid": "09be29a79f79fece3bad260a13d833f8e4669493"
+    }
+  },
+  "vavr-io/vavr": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 9
+      },
+      "oid": "77a69ce88eeca600b0e2636475465e8a7482b5fc"
+    }
+  },
+  "vercel/next.js": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "source": {
+        "path": ".github/pull_request_template.md",
+        "line": 7
+      },
+      "oid": "837d4977bedd8179f43544820923beba4c09e25b"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "Only members of the vercel or vercel-labs orgs may use an agent for PRs, issues and comments.",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 318
+      },
+      "oid": "466aaeb8d35593fc9b1f8b5e63d9aa31b8ca0025"
+    }
+  },
+  "vim/vim": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 54
+      },
+      "oid": "bd0451758265819f5e0202f4f8999267f269f38f"
+    }
+  },
+  "vitejs/vite": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 230
+      },
+      "oid": "c6f001bf1b4e3ce15134620cbd8954fd7bc988af"
+    }
+  },
+  "vitest-dev/vitest": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Same two principles as Vite: never let an LLM speak or think for you.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 3
+      },
+      "oid": "301b5e41529494cfcdb3630d53aaec8bdb52cb0f"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 122
+      },
+      "oid": "eefa56c21c093d55c11bd0fbef1e8fea514df48d"
+    }
+  },
+  "vllm-project/vllm": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "source": {
+        "path": "docs/contributing/README.md",
+        "line": 209
+      },
+      "oid": "d665116e47b53761fb721be132f9b414abe2b97f"
+    }
+  },
+  "webdriverio/webdriverio": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "CONTRIBUTING.md points AI agents to AGENTS.md (line 24) but states no rule."
+    }
+  },
+  "webpack/webpack": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed_with_disclosure",
+      "note": "Human in the loop (webpack/governance AI_POLICY.md).",
+      "source": {
+        "repo": "webpack/.github",
+        "path": ".github/pull_request_template.md",
+        "line": 29
+      },
+      "oid": "039eef196c90e5ae5d34267d7e34dbeea6105cdb"
+    }
+  },
+  "Wilfred/difftastic": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "note": "Disclose AI use (line 8).",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 12
+      },
+      "oid": "9d5668a77b69429368c081a25c919cf06c3e72d9"
+    }
+  },
+  "xonsh/xonsh": {
+    "ai_policy": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "AI_POLICY.md holds agent instructions rather than a contributor rule."
+    }
+  },
+  "yargs/yargs": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "allowed",
+      "note": "Do not open PRs entirely or largely generated by AI.",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 3
+      },
+      "oid": "516888b54c30ca3cbfb400feffded79244c03c8a"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "AI_POLICY.md",
+        "line": 12
+      },
+      "oid": "516888b54c30ca3cbfb400feffded79244c03c8a"
+    }
+  },
+  "yt-dlp/yt-dlp": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 35
+      },
+      "oid": "4a9125a1da773e490e44b6bbbc2c98995cd9fed3"
+    }
+  },
+  "zed-industries/zed": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "human_text_only",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 48
+      },
+      "oid": "a80791c97d6ae3906727b3e58c24bf38208f5df2"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 46
+      },
+      "oid": "a80791c97d6ae3906727b3e58c24bf38208f5df2"
+    }
+  },
+  "zellij-org/zellij": {
+    "ai_policy": {
+      "verdict": "human_text_only",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 21
+      },
+      "oid": "ba78fff18230e411c09cf27c32e8eb17096c2a5a"
+    }
+  },
+  "zkat/miette": {
+    "ai_policy": {
+      "verdict": "banned",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "banned",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 5
+      },
+      "oid": "5e14d81b8d3de2baddea3eadcbe831e17b8a0f73"
+    }
+  },
+  "zulip/zulip": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "You must understand and explain your changes; detailed guidance on AI in communication.",
+      "source": {
+        "path": "CONTRIBUTING.md",
+        "line": 119
+      },
+      "oid": "1a67347a41b83a55beb889690048a90683ed11ba"
+    }
+  }
+}

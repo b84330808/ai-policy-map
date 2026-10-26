@@ -69,6 +69,8 @@ export type PolicyRecord = {
   sources: { repo: string; path: string; kind: FileKind; scope: RepoFile["scope"]; url: string }[];
 };
 
+export const IMPLIED_NOTE = "Implied by the ban on AI-generated contributions.";
+
 const KIND_RANK: Record<FileKind, number> = { ai_policy: 0, contributing: 1, pr_template: 2, doc: 3, agents: 4, readme: 5, workflow: 6 };
 const QUOTE_MAX = 160;
 
@@ -175,7 +177,7 @@ export function classify(snap: RepoSnapshot, today = new Date().toISOString().sl
   if (forbid.length > 0 && agentAllow.length > 0) agent = verdict<AgentPolicy>("needs_review", [...forbid, ...agentAllow], "Rules both allow and forbid agent PRs.");
   else if (forbid.length > 0) agent = verdict<AgentPolicy>("forbidden", forbid);
   else if (agentAllow.length > 0) agent = verdict<AgentPolicy>("allowed", agentAllow);
-  else if (ai.value === "banned") agent = verdict<AgentPolicy>("forbidden", ban, "Implied by the ban on AI-generated contributions.");
+  else if (ai.value === "banned") agent = verdict<AgentPolicy>("forbidden", ban, IMPLIED_NOTE);
   else agent = verdict<AgentPolicy>("not_stated", []);
 
   // --- CLA / DCO ---

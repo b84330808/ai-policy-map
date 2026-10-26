@@ -63,7 +63,8 @@ export function sentences(text: string): Sentence[] {
       starts.push({ offset: joined.length, line: u.line });
       joined += u.text + " ";
     }
-    const re = /[^.!?]+(?:[.!?]+(?=\s|$)|$)|[.!?]+/g;
+    // A sentence ends at . ! ? followed by whitespace; "e.g", "3.14" or "README.md" do not end it.
+    const re = /(?:[^.!?]|[.!?]+(?=[^\s.!?]))+(?:[.!?]+(?=\s|$))?|[.!?]+/g;
     let m: RegExpExecArray | null;
     let buf = "";
     let bufStart = -1;
@@ -124,6 +125,7 @@ export const AI_TOOL = new RegExp(
     String.raw`\b(?:use|using|used|uses|usage of|use of|with the help of|help from|helped by|assistance (?:of|from)|rely on|relying on|leverag\w+|employ\w*)\s+(?:of\s+)?(?:an?\s+|any\s+|the\s+)?(?:\w+\s+)?${AI_NAME}\b`,
     String.raw`\b(?:generated|written|created|produced|authored)\s+(?:entirely\s+|fully\s+|solely\s+|partially\s+|primarily\s+|mostly\s+|wholly\s+)?(?:by|with|using|via|through)\s+(?:an?\s+|the\s+)?${AI_NAME}\b`,
     String.raw`\b(?:with|without|not with|by) (?:an? |the help of (?:an? )?)?${AI_NAME}\b`,
+    String.raw`\b(?:output|outputs|content|text|code|answers?|responses?)\s+(?:of|from|by)\s+(?:an?\s+|the\s+)?${AI_NAME}\b`,
     String.raw`\b(?:coding|software|autonomous|ai) (?:agents?|assistants?)\b`,
     String.raw`\bagentic\b`,
     String.raw`\bvibe[- ]?cod\w*`,
@@ -146,7 +148,7 @@ const BAN_VERBS = new RegExp(
   String.raw`\b${NEG}\s+(?:be\s+|currently\s+|generally\s+|ever\s+|knowingly\s+)?(?:accept\w*|allow\w*|permit\w*|welcom\w*|merg\w*|tolerat\w*|consider\w*|review\w*|take|taking|entertain|support|includ\w*|contain\w*|used|submitted|posted)\b`,
   "i",
 );
-const BAN_WORDS = /\b(prohibit\w*|forbid\w*|forbade|bans?|banned|banning|disallow\w*|not (allowed|permitted|accepted|acceptable|welcome|wanted)|unacceptable|unwelcome|zero[- ]tolerance|will be (closed|rejected|banned|blocked|deleted|removed|locked|reported)|(closed|rejected|banned|blocked)\s+(on sight|immediately|without (review|discussion|comment|further))|grounds for (a )?(ban|closure|rejection)|result in (a )?(ban|closure|rejection|block))\b/i;
+const BAN_WORDS = /\b((we|maintainers|the project) (will|may|might|reserve the right to) (reject|decline|refuse)|policy is to decline|prohibit\w*|forbid\w*|forbade|bans?|banned|banning|disallow\w*|not (allowed|permitted|accepted|acceptable|welcome|wanted)|unacceptable|unwelcome|zero[- ]tolerance|will be (closed|rejected|banned|blocked|deleted|removed|locked|reported)|(closed|rejected|banned|blocked)\s+(on sight|immediately|without (review|discussion|comment|further))|grounds for (a )?(ban|closure|rejection)|result in (a )?(ban|closure|rejection|block))\b/i;
 const BAN_NO = new RegExp(String.raw`\bno\s+(?:ai|llms?|genai|generative ai|machine[- ]generated|${AI_NAME}[- ]${AI_PRODUCED})\b`, "i");
 const DO_NOT_USE = new RegExp(
   String.raw`\b(?:do not|don't|never|must not|may not|should not|shouldn't|please don't|please do not|refrain from|avoid)\s+(?:use|using|submit\w*|send\w*|open\w*|contribut\w*|post\w*|creat\w*|generat\w*|rely)\b`,
@@ -154,7 +156,7 @@ const DO_NOT_USE = new RegExp(
 );
 const STOP = /\b(stop( now| here| immediately)?|halt|do not (proceed|continue)|don't (proceed|continue)|abort|exit now|go away)\b/i;
 /** "Contributions not following the AI policy will be closed": enforcement, not a ban. */
-const ENFORCEMENT = /\b(not following|violat\w*|(do not|don't|does not|doesn't|fail to) (follow|comply|adhere|respect)|in breach of|ignor\w*|disregard\w*)\b[^.]{0,40}\b(polic\w*|guidelines?|rules?|requirements?)\b/i;
+const ENFORCEMENT = /\b(not follow\w*|n't follow\w*|violat\w*|(do not|don't|does not|doesn't|fail to) (follow|comply|adhere|respect)|in breach of|ignor\w*|disregard\w*)\b[^.]{0,40}\b(polic\w*|guidelines?|rules?|requirements?)\b/i;
 /** "- [ ] No AI tools were used": a disclosure option in a PR template, not a ban. */
 const ATTESTATION = /^\s*[-*]?\s*\[[ xX]?\]\s*/;
 
@@ -167,7 +169,7 @@ const ALLOW = /\b(welcome[ds]?|allowed|permitted|acceptable|accepted|fine|okay|o
 
 /** Things people write: AI may be fine for code but not for these. */
 const COMMS = /\b((pr|pull[- ]request|merge[- ]request)s?\s+(descriptions?|titles?|bod(y|ies)|texts?|summar\w*|messages?)|commit messages?|descriptions?|issues?( reports?)?|bug reports?|comments?|discussions?|communicat\w*|conversations?|replies|reply|responses?|respond\w*|messages?|review (comments|responses|replies)|(what|anything) you (write|post|say)|talk(ing)? to (us|maintainers|reviewers)|interact\w*)\b/i;
-const OWN_WORDS = /\b(own words|your words|own writing|your own (writing|thoughts|ideas|explanation)|in your (own )?voice|own voice|human[- ](written|authored|generated|crafted|composed)|written by (a |an actual |the )?(human|person|you|yourself)|by (a )?human(s)?\b|by yourself|write (it|them|this|these)? ?yourself|yourself,? not|personally (write|written)|real person|not (be )?(written|generated|produced|drafted) (by|with|using) (an? )?(ai|llm|tool|machine))/i;
+const OWN_WORDS = /\b(own words|your words|own writing|your own (writing|thoughts|ideas|explanation)|in your (own )?voice|own voice|human[- ](written|authored|generated|crafted|composed)|(written|authored|composed) by (a |an actual |the )?(human|person|you|yourself)|by yourself|write (it|them|this|these)? ?yourself|yourself,? not|personally (write|written)|real person|not (be )?(written|generated|produced|drafted) (by|with|using) (an? )?(ai|llm|tool|machine))/i;
 const CODE_WORDS = /\b(code|patch(es)?|changes?|implementation|commits?|contributions?|pull requests?|prs?)\b/i;
 
 const AGENT = /\b(autonomous(ly)?|agentic|unattended|fully[- ]automated|automated (pull requests|prs|contributions|submissions|tools?|accounts?|agents?|systems?)|(ai|llm|coding|autonomous|software|ai coding) agents?|ai bots?|bots?|claws?|openclaw|devin|swe-agent|agents? (that )?(open|opening|create|creating|submit\w*|file|filing)|without (a |any )?human( (involvement|oversight|review|intervention|in the loop|supervision))?|human[- ]in[- ]the[- ]loop|on (your|their) (own|behalf))\b/i;
@@ -195,6 +197,9 @@ const ASSIGNMENT = /\b((be|get|been|is|are|being)\s+assigned\b|assign(ed)?\s+(it
 export const LARGER_CHANGES = /\b(major|large|larger|significant|big|bigger|substantial|non-?trivial|complex|new features?|breaking|api changes?|architectural|anything (more than|beyond)|not (a )?trivial|more than (a )?(small|trivial|minor)|bigger than)\b/i;
 const NOT_NEEDED = /\b(no need|not (necessary|required|needed|mandatory)|don't need|do not need|needn't|not have to|don't have to|do not have to|optional|feel free to (open|submit|send))\b/i;
 
+const AGENT_FILE_FORBID = /\b(never|do not|don't|must not|may not|should not|shall not|not (permitted|allowed) to|forbidden to)\s+(\w+\s+){0,4}?(open|create|submit|file|send|make|raise)\w*\s+(a |an |any |the |new |your )*(pull requests?|prs?|issues?|merge requests?)\b(?!\s+(solely|just|only|merely|for|that|which|against|with|from|before|after|when|if)\b)(?!\s+without\s+(?![^.]*\b(approval|permission|consent|confirmation|asking|instructions?|request)\b))/i;
+/** "We have paused accepting pull requests from outside the team." */
+const PAUSED_PRS = /\b(paused|stopped|suspended|closed) (accepting|taking|reviewing) (outside |external |community |new )?(pull requests|prs|contributions)\b|\bnot (currently )?accepting (outside |external |community |new )?(pull requests|prs|code contributions)\b/i;
 const NO_OUTSIDE_PRS = /\b(do not|don't|does not|doesn't|cannot|can't|won't|will not|not|no longer)\s+(currently\s+|generally\s+|usually\s+|actively\s+)?(accept|take|review|look at|merge|consider|use)\w*\s+(any\s+|external\s+|outside\s+|unsolicited\s+|uninvited\s+|third[- ]party\s+|community\s+)?(pull requests|prs|patches|code contributions|contributions)\b(?![^.]{0,40}\b(without|unless|that|which|from (ai|llm)|generated|written|created)\b)/i;
 const MIRROR = /\b(this|the) (repository|repo) is (a |only a |just a )?(read[- ]only )?mirror\b|\bread[- ]only mirror\b/i;
 
@@ -222,7 +227,7 @@ export function tagSentence(s: Sentence, ctx: FileContext): Set<Tag> {
   if (ASSIGNMENT.test(t) && /\b(issues?|work|tasks?|prs?|pull requests?)\b/i.test(t)) {
     tags.add(NOT_NEEDED.test(t) || /\b(don't|do not|no need to) (wait|ask)\b/i.test(t) ? "issue_first_negated" : "assignment");
   }
-  if ((NO_OUTSIDE_PRS.test(t) && !AI_ANY.test(t)) || MIRROR.test(t)) tags.add("no_outside_prs");
+  if ((NO_OUTSIDE_PRS.test(t) && !AI_ANY.test(t)) || MIRROR.test(t) || PAUSED_PRS.test(t)) tags.add("no_outside_prs");
 
   const aiTool = AI_TOOL.test(t);
   const selfAddress = SELF_ADDRESS.test(t);
@@ -232,7 +237,7 @@ export function tagSentence(s: Sentence, ctx: FileContext): Set<Tag> {
   const attestation = ATTESTATION.test(t);
   const banned = !ENFORCEMENT.test(t) && (BAN_VERBS.test(t) || BAN_WORDS.test(t) || BAN_NO.test(t) || DO_NOT_USE.test(t));
   const conditional = CONDITION.test(t);
-  const disclose = DISCLOSE.test(t) && !/\b(do not|don't|no need to|not required to) (disclose|mention|label|indicate)/i.test(t);
+  const disclose = DISCLOSE.test(t) && !/\b(do not|don't|no need to|not required to|not have to|don't have to|not asked to|not need to|not necessary to) (disclose|mention|label|indicate)|\b(disclosure|attribution)\b[^.]{0,30}\b(is )?(not required|optional|not necessary)|\bnot required\b/i.test(t);
   const allow = hasUnnegated(ALLOW, t);
   const comms = COMMS.test(t);
   const ownWords = OWN_WORDS.test(t);
@@ -243,7 +248,9 @@ export function tagSentence(s: Sentence, ctx: FileContext): Set<Tag> {
   const agentish = AGENT.test(t) || selfAddress || (ctx.agentFile && OPEN_PR.test(t) && !aboutDuplicates);
   if (agentish) {
     if (selfAddress && (STOP.test(t) || banned)) tags.add("agent_forbid");
-    else if ((banned || HUMAN_REQUIRED.test(t)) && (AGENT.test(t) || OPEN_PR.test(t))) tags.add("agent_forbid");
+    else if ((banned || HUMAN_REQUIRED.test(t)) && AGENT.test(t)) tags.add("agent_forbid");
+    // In an agent file, only a prohibition aimed at opening the PR itself counts ("Never create a PR").
+    else if (ctx.agentFile && AGENT_FILE_FORBID.test(t)) tags.add("agent_forbid");
     else if (allow && !banned && !/\bbut not\b/i.test(t) && /\b(open|submit|creat|send|file)\w*\b/i.test(t)) tags.add("agent_allow");
   }
   if (!aiTool) return tags;
@@ -288,6 +295,8 @@ export const KNOWN_ACTIONS: Record<string, string> = {
   "contributor-assistant/github-action": "CLA Assistant",
   "cla-assistant/github-action": "CLA Assistant",
   "finos/cla-bot": "CLA bot",
+  "peakoss/anti-slop": "anti-slop (scores PRs for signs of AI slop)",
+  "mitchellh/vouch": "vouch (only vouched users may open PRs)",
 };
 
 const ANTI_AUTOMATION_TEXT = /(agentscan|unattended[-_ ]pr|ai[-_ ]?(policy|slop|spam|moderat\w*|detect\w*|guard|disclosure|generated|check)|llm[-_ ]?(spam|detect\w*|guard|generated)|\bslop\b|vouch(ed)?\b|maybe[-_ ]?ai|possibly[-_ ]?ai|anti[-_ ]?(ai|bot|spam|slop))/i;
@@ -306,6 +315,7 @@ export function scanWorkflow(path: string, text: string): WorkflowHit[] {
     const line = i + 1;
     const uses = /^\s*-?\s*uses:\s*['"]?([\w.-]+\/[\w.\/-]+)/.exec(l);
     if (uses) {
+      if (uses[1]!.startsWith(".")) return; // a local action in the same repo
       const action = uses[1]!.toLowerCase().replace(/\/$/, "");
       const base = action.split("/").slice(0, 2).join("/");
       const known = KNOWN_ACTIONS[base];
@@ -340,7 +350,7 @@ export function scanWorkflow(path: string, text: string): WorkflowHit[] {
   });
 }
 
-const ANTI_LABEL = /((maybe|possibly|likely|suspected|probably|potential(ly)?|suspicious)[-_ :]*(ai|llm|automated|bot|spam|slop|generated)|\bai[-_ :]*(generated|slop|spam|assisted|policy|pr|contribution|written|authored)|llm[-_ :]*(generated|spam|written|pr)|from[-_ ]?(an?[-_ ])?llm|\bslop\b|\bvouch|agent[-_ ]?(generated|authored|pr\b)|bot:ai|automated[-_ ]?(pr|contribution)|unattended|low[-_ ]effort)/i;
+const ANTI_LABEL = /((maybe|possibly|likely|suspected|probably|potential(ly)?|suspicious)[-_ :]*(ai|llm|automated|bot|spam|slop|generated)|\bai[-_ :]*(generated|slop|spam|assisted|policy|prs?|contributions?|written|authored)\b|llm[-_ :]*(generated|spam|written|pr)|from[-_ ]?(an?[-_ ])?llm|\bslop\b|\bvouch|agent[-_ ]?(generated|authored|pr\b)|bot:ai|automated[-_ ]?(pr|contribution)|unattended|low[-_ ]effort)/i;
 
 export function antiAutomationLabels(labels: string[]): string[] {
   return labels.filter((l) => ANTI_LABEL.test(l));
