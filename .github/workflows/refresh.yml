@@ -38,7 +38,10 @@ jobs:
       - name: Crawl
         run: npm run collect
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: a read-only token saved as POLICY_MAP_TOKEN can also read
+          # check runs of other repos, which the Actions token cannot; without
+          # it, check-based signals are carried over from the last run.
+          GITHUB_TOKEN: ${{ secrets.POLICY_MAP_TOKEN || secrets.GITHUB_TOKEN }}
 
       - run: npm run validate
       - run: npm test

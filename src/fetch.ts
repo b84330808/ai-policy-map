@@ -5,7 +5,7 @@
 // Pass 2 is skipped for a repo when the cached snapshot has the same commit.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { graphql, lit } from "./github.ts";
+import { graphql, graphqlPartial, lit } from "./github.ts";
 
 export type FileKind =
   | "contributing"
@@ -49,6 +49,8 @@ export type RepoSnapshot = {
   checks: string[];
   files: RepoFile[];
   fetchedAt: string;
+  /** True when the token could not read check runs (e.g. GITHUB_TOKEN in Actions). */
+  checksUnavailable?: boolean;
 };
 
 const CACHE_DIR = ".cache/snapshots";
@@ -119,7 +121,10 @@ type MetaResult = {
   [key: string]: unknown;
 };
 
-type Listed = { meta: MetaResult; entries: TreeEntry[] };
+type Listed = { meta: MetaResult; entries: TreeEntry[]; forbidden?: string[] };
+
+/** Field paths the token was not allowed to read, reported once per run. */
+export const forbiddenFields = new Set<string>();
 
 function splitName(full: string): [string, string] {
   const i = full.indexOf("/");
@@ -143,10 +148,11 @@ async function pool<T, R>(items: T[], n: number, fn: (item: T, index: number) =>
 /** Pass 1 for one repo. Returns null when the repo does not exist. */
 async function listRepo(repo: string): Promise<Listed | null> {
   const [o, n] = splitName(repo);
-  const data = await graphql<{ repository: MetaResult | null }>(`query { repository(owner: ${lit(o)}, name: ${lit(n)}) { ${META} } rateLimit { cost remaining resetAt } }`);
+  const { data, forbidden } = await graphqlPartial<{ repository: MetaResult | null }>(`query { repository(owner: ${lit(o)}, name: ${lit(n)}) { ${META} } rateLimit { cost remaining resetAt } }`);
+  for (const f of forbidden) forbiddenFields.add(f.replace(/\.\d+/g, ".*"));
   const meta = data.repository;
   if (!meta) return null;
-  return withSubdirs(meta);
+  return { ...(await withSubdirs(meta)), forbidden };
 }
 
 function treesOf(meta: MetaResult): TreeEntry[] {
@@ -321,7 +327,7 @@ async function writeCache(s: RepoSnapshot & { extras: string[]; key: string }): 
   await writeFile(cachePath(s.repo), JSON.stringify(s));
 }
 
-function toSnapshot({ meta, entries }: Listed): RepoSnapshot {
+function toSnapshot({ meta, entries, forbidden }: Listed): RepoSnapshot {
   const labels = new Set<string>();
   for (const n of [...(meta.labels?.nodes ?? []), ...(meta.aiLabels?.nodes ?? [])]) labels.add(n.name);
   const checks = new Set<string>();
@@ -353,6 +359,7 @@ function toSnapshot({ meta, entries }: Listed): RepoSnapshot {
     checks: [...checks].sort(),
     files: [],
     fetchedAt: new Date().toISOString(),
+    ...(forbidden?.some((f) => f.includes("pullRequests")) ? { checksUnavailable: true } : {}),
   };
 }
 

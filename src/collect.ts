@@ -4,7 +4,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
 import { classify, type PolicyRecord } from "./classify.ts";
-import { cachedSnapshots, fetchSnapshots } from "./fetch.ts";
+import { cachedSnapshots, fetchSnapshots, forbiddenFields } from "./fetch.ts";
 import { applyReviews, type Reviews } from "./reviews.ts";
 import { toCsv } from "./csv.ts";
 
@@ -45,7 +45,9 @@ async function main() {
 
   const started = Date.now();
   const snaps = args.offline ? await cachedSnapshots(repos) : await fetchSnapshots(repos, { extraSources, log: (m) => console.log(m) });
+  if (forbiddenFields.size > 0) console.log(`token could not read: ${[...forbiddenFields].join(", ")}`);
   const today = new Date().toISOString().slice(0, 10);
+  const before = new Map(previous.map((p) => [p.repo, p]));
   const records: PolicyRecord[] = [];
   const missing: string[] = [];
   const seen = new Set<string>();
@@ -57,15 +59,21 @@ async function main() {
     }
     if (seen.has(snap.repo)) continue;
     seen.add(snap.repo);
-    records.push(applyReviews(classify(snap, today), snap, reviews));
+    const rec = applyReviews(classify(snap, today), snap, reviews);
+    const prev = before.get(snap.repo);
+    records.push(snap.checksUnavailable && prev ? keepCheckSignals(rec, prev) : rec);
   }
 
-  // A partial run (--only/--limit) updates those records and keeps the rest.
-  let all = records;
-  if (args.only || args.limit) {
-    const updated = new Set(records.map((r) => r.repo));
-    all = [...previous.filter((p) => !updated.has(p.repo)), ...records];
+  // Never let a bad run wipe the data: stop if many repos failed, and keep
+  // the last known record for the few that did.
+  const partial = Boolean(args.only || args.limit);
+  if (!partial && missing.length > repos.length * 0.05) {
+    console.error(`${missing.length} of ${repos.length} repos could not be read; not writing anything.`);
+    process.exit(1);
   }
+  const updated = new Set(records.map((r) => r.repo));
+  const kept = partial ? previous.filter((p) => !updated.has(p.repo)) : previous.filter((p) => !updated.has(p.repo) && missing.includes(p.repo));
+  const all = [...kept, ...records];
   all.sort((a, b) => a.repo.toLowerCase().localeCompare(b.repo.toLowerCase()));
 
   await mkdir(args.out!, { recursive: true });
@@ -78,6 +86,24 @@ async function main() {
 
   console.log(`done: ${records.length} repos in ${Math.round((Date.now() - started) / 1000)}s; missing: ${missing.join(", ") || "none"}`);
   console.log(JSON.stringify(meta.counts, null, 2));
+}
+
+const CHECK_EVIDENCE = /^check on recent PRs: /;
+
+/**
+ * When the token cannot read check runs (the Actions GITHUB_TOKEN cannot, for
+ * other repositories), keep the check-based signals from the last run rather
+ * than dropping them.
+ */
+export function keepCheckSignals(rec: PolicyRecord, prev: PolicyRecord): PolicyRecord {
+  const checks = prev.anti_automation.filter((s) => s.kind === "check");
+  const anti = [...rec.anti_automation.filter((s) => s.kind !== "check"), ...checks];
+  const flag = (now: PolicyRecord["cla"], was: PolicyRecord["cla"]): PolicyRecord["cla"] => {
+    const carried = was.evidence.filter((e) => CHECK_EVIDENCE.test(e.quote));
+    if (carried.length === 0 || now.value === true) return now;
+    return { value: true, evidence: [...now.evidence, ...carried].slice(0, 3) };
+  };
+  return { ...rec, anti_automation: anti, cla: flag(rec.cla, prev.cla), dco: flag(rec.dco, prev.dco) };
 }
 
 export function summarize(all: PolicyRecord[]) {

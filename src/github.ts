@@ -35,6 +35,15 @@ export class GraphQLError extends Error {
  * repos come back as null); any other error throws after retries.
  */
 export async function graphql<T>(query: string, variables: Record<string, unknown> = {}, opts: { retries?: number } = {}): Promise<T> {
+  return (await graphqlPartial<T>(query, variables, opts)).data;
+}
+
+/**
+ * Like graphql(), but FORBIDDEN errors on some fields do not fail the query:
+ * the fields come back null and their paths are returned. An Actions
+ * GITHUB_TOKEN, for one, cannot read check runs of other repositories.
+ */
+export async function graphqlPartial<T>(query: string, variables: Record<string, unknown> = {}, opts: { retries?: number } = {}): Promise<{ data: T; forbidden: string[] }> {
   const retries = opts.retries ?? 4;
   for (let attempt = 1; ; attempt++) {
     const wait = lastCall + MIN_GAP_MS - Date.now();
@@ -77,7 +86,8 @@ export async function graphql<T>(query: string, variables: Record<string, unknow
     if (!res.ok) throw new Error(`GitHub GraphQL HTTP ${res.status}: ${await res.text()}`);
 
     const body = (await res.json()) as GraphQLResult<T>;
-    const errors = (body.errors ?? []).filter((e) => e.type !== "NOT_FOUND");
+    const forbidden = (body.errors ?? []).filter((e) => e.type === "FORBIDDEN" && body.data).map((e) => (e.path ?? []).join("."));
+    const errors = (body.errors ?? []).filter((e) => e.type !== "NOT_FOUND" && !(e.type === "FORBIDDEN" && body.data));
     if (errors.length > 0) {
       const transient = errors.some((e) => /something went wrong|timeout|timed out/i.test(e.message));
       const limited = errors.some((e) => e.type === "RATE_LIMITED");
@@ -94,7 +104,7 @@ export async function graphql<T>(query: string, variables: Record<string, unknow
     }
     if (!body.data) throw new Error("GitHub GraphQL returned no data");
     await respectBudget(body.data);
-    return body.data;
+    return { data: body.data, forbidden };
   }
 }
 
