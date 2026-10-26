@@ -1,0 +1,12 @@
+The data in this folder (policies.json, policies.csv, meta.json, reviews.json,
+seed.txt, repos.txt, exclude.txt, extra-sources.json) is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Attribution: "AI Contribution Policy Map" by Wei-Lun Li,
+https://github.com/b84330808/ai-policy-map
+
+License text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Short quotes from each repository's own files are included to show what a
+verdict is based on; they remain under the license of the repository they
+come from, and every quote links to its source.

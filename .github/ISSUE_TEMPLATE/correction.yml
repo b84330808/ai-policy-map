@@ -1,0 +1,50 @@
+name: Correction request
+description: A verdict for a repository is wrong or out of date.
+title: "Correction: OWNER/REPO"
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep this accurate. Maintainers of the repository are especially welcome.
+        A link to the line that states the policy is the fastest way to get a fix.
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      placeholder: owner/name
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Which verdict is wrong?
+      options:
+        - AI-assisted contributions
+        - Agents opening PRs on their own
+        - CLA / DCO
+        - Issue first / assignment
+        - Outside PRs
+        - Anti-automation signals
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What should it say?
+      placeholder: e.g. "Allowed with disclosure: contributors must say which tool they used."
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Link to the source
+      description: A link to the file and line, a docs page, or a maintainer statement.
+      placeholder: https://github.com/owner/name/blob/main/CONTRIBUTING.md#L42
+  - type: checkboxes
+    id: maintainer
+    attributes:
+      label: Are you a maintainer of this repository?
+      options:
+        - label: "Yes"

@@ -1,0 +1,7 @@
+# Repos `npm run discover` skips even when they top a language list:
+# collections, Q&A or docs rather than software that takes code PRs.
+affaan-m/ECC                # config and prompt collection
+ultraworkers/claw-code      # maintained by agents only, by design
+msitarzewski/agency-agents  # prompt collection
+bannedbook/fanqiang         # documentation
+doocs/advanced-java         # interview Q&A

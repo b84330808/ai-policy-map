@@ -1,0 +1,65 @@
+name: Weekly refresh
+
+# Re-crawls every repo in data/repos.txt and opens (or updates) a pull
+# request on this repository with the changed data. Nothing is merged
+# automatically.
+on:
+  schedule:
+    - cron: "17 3 * * 1" # Mondays 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      # File texts are cached per commit, so unchanged repos cost one query.
+      - uses: actions/cache@v6
+        with:
+          path: .cache/snapshots
+          key: snapshots-${{ github.run_id }}
+          restore-keys: snapshots-
+
+      - name: Crawl
+        run: npm run collect
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm run validate
+      - run: npm test
+
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data/; then
+            echo "No data changes."
+            exit 0
+          fi
+          branch=data-refresh
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$branch"
+          git add data/policies.json data/policies.csv data/meta.json
+          git commit -m "Refresh policy data ($(date -u +%F))"
+          git push --force origin "$branch"
+          if [ "$(gh pr view "$branch" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
+            gh pr edit "$branch" --body-file .cache/refresh-summary.md
+          else
+            gh pr create --head "$branch" --base main --title "Weekly data refresh" --body-file .cache/refresh-summary.md
+          fi

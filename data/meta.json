@@ -1,0 +1,48 @@
+{
+  "generated": "2026-10-25",
+  "repos": 340,
+  "counts": {
+    "ai_policy": {
+      "not_stated": 135,
+      "banned": 27,
+      "human_text_only": 40,
+      "allowed_with_disclosure": 50,
+      "needs_review": 70,
+      "allowed": 18
+    },
+    "ai_policy_status": {
+      "auto": 340
+    },
+    "agent_prs": {
+      "not_stated": 264,
+      "forbidden": 73,
+      "allowed": 2,
+      "needs_review": 1
+    },
+    "cla": {
+      "null": 271,
+      "true": 66,
+      "false": 3
+    },
+    "dco": {
+      "null": 317,
+      "true": 23
+    },
+    "issue_first": {
+      "not_stated": 230,
+      "required": 84,
+      "for_larger_changes": 24,
+      "not_required": 2
+    },
+    "outside_prs": {
+      "open": 307,
+      "collaborators_only": 23,
+      "disabled": 4,
+      "not_accepted": 6
+    },
+    "anti_automation": {
+      "no": 283,
+      "yes": 57
+    }
+  }
+}

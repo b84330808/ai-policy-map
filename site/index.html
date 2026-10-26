@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Contribution Policy Map</title>
+  <meta name="description" content="How popular GitHub repositories treat AI-assisted contributions and AI agents opening pull requests, with a link to the source line for every verdict.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f5d8a'/%3E%3Cpath d='M9 22l5-12h4l5 12h-4l-1-3h-4l-1 3zm6-6h2l-1-3z' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>AI Contribution Policy Map</h1>
+      <p class="lede">How <strong id="repo-count">…</strong> popular GitHub repositories treat AI-assisted contributions and AI agents that open pull requests. Each verdict links to the line it is based on.</p>
+      <p class="warning" role="note"><strong>Policies change.</strong> Most verdicts come from keyword rules. Read the linked source before you contribute.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="summary" aria-label="AI policy counts" id="summary"></section>
+
+    <section class="controls" aria-label="Search and filters">
+      <label class="search">
+        <span class="visually-hidden">Search repositories</span>
+        <input id="q" type="search" placeholder="Search repos, e.g. rust-lang or python" autocomplete="off">
+      </label>
+      <label>AI policy
+        <select id="f-ai"><option value="">Any</option></select>
+      </label>
+      <label>Agent PRs
+        <select id="f-agent"><option value="">Any</option></select>
+      </label>
+      <label>Language
+        <select id="f-lang"><option value="">Any</option></select>
+      </label>
+      <label>Sort
+        <select id="sort">
+          <option value="stars">Most stars</option>
+          <option value="name">Name</option>
+          <option value="strict">Strictest first</option>
+        </select>
+      </label>
+      <fieldset class="flags">
+        <legend class="visually-hidden">Other filters</legend>
+        <label><input type="checkbox" id="f-cla"> CLA</label>
+        <label><input type="checkbox" id="f-dco"> DCO</label>
+        <label><input type="checkbox" id="f-issue"> Issue first</label>
+        <label><input type="checkbox" id="f-closed"> Outside PRs limited</label>
+        <label><input type="checkbox" id="f-anti"> Anti-automation signals</label>
+        <label><input type="checkbox" id="f-reviewed"> Reviewed only</label>
+      </fieldset>
+      <div class="downloads">
+        <a href="data/policies.json" download>JSON</a>
+        <a href="data/policies.csv" download>CSV</a>
+      </div>
+    </section>
+
+    <p class="result-count" id="result-count" aria-live="polite"></p>
+
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr>
+            <th scope="col">Repository</th>
+            <th scope="col">AI-assisted contributions</th>
+            <th scope="col">Agents opening PRs</th>
+            <th scope="col">CLA / DCO</th>
+            <th scope="col">Issue first</th>
+            <th scope="col">Outside PRs</th>
+            <th scope="col">Anti-automation</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="empty" hidden>No repositories match these filters.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>How this works</h2>
+      <p>A collector reads each repository's CONTRIBUTING, AI policy, AGENTS.md / CLAUDE.md, pull request templates, workflows and labels (plus the organisation's <code>.github</code> fallback) through the GitHub API, and applies keyword rules. Each verdict keeps the file and line it came from. Where the rules disagree or only partly match, the verdict is <em>Needs review</em> instead of a guess. Verdicts marked <span class="status reviewed">reviewed</span> were set by hand after reading the cited text; <code>data/reviews.json</code> records who reviewed each one and when. A review is flagged <span class="status review_stale">source changed</span> when the cited file changes.</p>
+      <p>Not stated means the files we read say nothing we recognise. It does not mean AI contributions are welcome. Policies can also live in places we do not read (wikis, websites, discussions).</p>
+      <p><strong>Maintainers:</strong> if a verdict is wrong or out of date, <a id="correction-link" href="https://github.com/b84330808/ai-policy-map/issues/new?template=correction.yml">request a correction</a>.</p>
+      <p class="meta">Data refreshed weekly. Last update: <span id="generated">…</span>. Code: MIT. Data: CC BY 4.0. <a href="https://github.com/b84330808/ai-policy-map">Source on GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
