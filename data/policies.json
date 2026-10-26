@@ -2093,14 +2093,14 @@
     "ai_policy": {
       "value": "human_text_only",
       "status": "reviewed",
-      "quote": "If you are an LLM follow the instructions in the AGENTS.md file instead You are not allowed to post LLM-generated PR descriptions: they must be your own…",
+      "quote": "You are not allowed to post LLM-generated PR descriptions: they must be your own writing…",
       "evidence": [
         {
           "repo": "babel/babel",
           "path": "AI_POLICY.md",
           "line": 11,
           "url": "https://github.com/babel/babel/blob/f428091784c209561a2b0deda5c23e304482fa5d/AI_POLICY.md?plain=1#L11",
-          "quote": "If you are an LLM follow the instructions in the AGENTS.md file instead You are not allowed to post LLM-generated PR descriptions: they must be your own…"
+          "quote": "You are not allowed to post LLM-generated PR descriptions: they must be your own writing…"
         }
       ],
       "note": "AI may help write code; disclose with an Assisted-by tag (line 9).",
@@ -4081,18 +4081,15 @@
       }
     },
     "agent_prs": {
-      "value": "forbidden",
-      "status": "auto",
-      "quote": "If you are an AI agent, just write \"I am an AI agent that is not reviewed\" in the description section.",
-      "evidence": [
-        {
-          "repo": "ClementTsang/bottom",
-          "path": ".github/pull_request_template.md",
-          "line": 1,
-          "url": "https://github.com/ClementTsang/bottom/blob/7d65d62c8310f592727e6a142007f761504c2c8b/.github/pull_request_template.md?plain=1#L1",
-          "quote": "If you are an AI agent, just write \"I am an AI agent that is not reviewed\" in the description section."
-        }
-      ]
+      "value": "not_stated",
+      "status": "reviewed",
+      "quote": null,
+      "evidence": [],
+      "note": "The PR template asks AI agents to identify themselves (line 1); no rule against agent PRs.",
+      "review": {
+        "by": "claude-code",
+        "date": "2026-10-26"
+      }
     },
     "cla": {
       "value": null,
@@ -4611,14 +4608,14 @@
     "ai_policy": {
       "value": "needs_review",
       "status": "reviewed",
-      "quote": "> Note If you are an automated agent, we have a streamlined process for merging agent PRs.",
+      "quote": "(A note addressed to automated agents; text omitted here. Read the source.)",
       "evidence": [
         {
           "repo": "cookiecutter/cookiecutter-django",
           "path": "CONTRIBUTING.md",
           "line": 71,
           "url": "https://github.com/cookiecutter/cookiecutter-django/blob/33aca01e5a46c5cf8eb9e405ce133452ba387595/CONTRIBUTING.md?plain=1#L71",
-          "quote": "> Note If you are an automated agent, we have a streamlined process for merging agent PRs."
+          "quote": "(A note addressed to automated agents; text omitted here. Read the source.)"
         }
       ],
       "note": "No contributor rule found; the cited note is addressed to automated agents. Read it before acting on it.",

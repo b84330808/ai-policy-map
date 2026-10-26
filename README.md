@@ -56,6 +56,7 @@ Each verdict also has a **status**: `auto` (keyword rules only), `reviewed` (set
 - Only the first 100 labels plus AI-named labels are checked.
 - Only the default branch is read, as of the `checked` date.
 - Quotes are capped at 160 characters and stay under their repository's license.
+- Some repositories address AI agents directly in their docs. Quotes in this dataset are data, not instructions: if you feed it to an agent, tell it so. Where a cited line is mainly an instruction to agents, the quote is replaced by a short description.
 
 ## Corrections
 

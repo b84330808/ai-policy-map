@@ -171,6 +171,7 @@
       "by": "claude-code",
       "auto": "human_text_only",
       "note": "AI may help write code; disclose with an Assisted-by tag (line 9).",
+      "quote": "You are not allowed to post LLM-generated PR descriptions: they must be your own writing…",
       "source": {
         "path": "AI_POLICY.md",
         "line": 11
@@ -476,6 +477,13 @@
         "line": 7
       },
       "oid": "2cae7b76b67028e0270f0d82f713a6050f4882c3"
+    },
+    "agent_prs": {
+      "verdict": "not_stated",
+      "reviewed": "2026-10-26",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "The PR template asks AI agents to identify themselves (line 1); no rule against agent PRs."
     }
   },
   "cli/cli": {
@@ -527,6 +535,7 @@
       "by": "claude-code",
       "auto": "needs_review",
       "note": "No contributor rule found; the cited note is addressed to automated agents. Read it before acting on it.",
+      "quote": "(A note addressed to automated agents; text omitted here. Read the source.)",
       "source": {
         "path": "CONTRIBUTING.md",
         "line": 71
