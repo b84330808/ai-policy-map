@@ -10,7 +10,8 @@ This project reads the contribution docs of a few hundred well-known repositorie
 | CLA or DCO sign-off | required / not found |
 | Issue or discussion first, assignment | required · for larger changes · not required · not stated |
 | Who can open PRs | open · collaborators only (`pull_request_creation_policy`) · PRs disabled · not accepted (stated in docs) |
-| Anti-automation signals | workflows such as [AgentScan](https://github.com/MatteoGabriele/agentscan-action), [unattended-pr-guard](https://github.com/scrapy/unattended-pr-guard) or [vouch](https://github.com/mitchellh/vouch), labels such as `maybe-ai`, a PR creation cap |
+| Anti-automation signals | workflows such as [AgentScan](https://github.com/MatteoGabriele/agentscan-action), [unattended-pr-guard](https://github.com/scrapy/unattended-pr-guard) or [vouch](https://github.com/mitchellh/vouch), labels such as `maybe-ai`, a PR creation cap, lines in the docs that ask AI agents to identify themselves (a 🤖 in the PR title, a fixed phrase) |
+| PR checkboxes on AI use | items in the pull request template such as "I did not use AI to generate this PR" or "I am a human, and not a bot", quoted with their line |
 
 Every verdict links to the file and line it is based on, pinned to the commit that was read.
 
@@ -42,8 +43,8 @@ Each verdict also has a **status**: `auto` (keyword rules only), `reviewed` (set
    - pull request templates, the README, and workflow files
    - the organisation's `.github` repo: its AI policy files always, its CONTRIBUTING and PR template only when the repo has none (GitHub's own fallback rule)
    - extra sources listed in [`data/extra-sources.json`](data/extra-sources.json), including files in another repo (`"owner/name:path"`)
-3. **Rules.** [`src/rules.ts`](src/rules.ts) splits each file into sentences (keeping line numbers) and tags the ones that talk about AI as an authoring tool: ban, conditional ban, human-written text, disclosure, permission, agent rules. Separate rules find CLA, DCO, issue-first and assignment wording. Workflows are scanned for known actions and names; labels and check names for AI-related ones. [`src/classify.ts`](src/classify.ts) combines the tags; conflicts become **needs review**. Mentions of AI in repos whose subject is AI are ignored unless they match a rule.
-4. **Reviews.** Entries in `data/reviews.json` override a verdict. Each one cites a file and line and stores the file's blob id, so a changed file marks the review stale instead of silently keeping an old answer. Every review records who made it (`by`). The first pass (2026-10-26, `by: "claude-code"`) was done with Claude Code reading each cited file in full; corrections from people are very welcome.
+3. **Rules.** [`src/rules.ts`](src/rules.ts) splits each file into sentences (keeping line numbers) and tags the ones that talk about AI as an authoring tool: ban, conditional ban, human-written text, disclosure, permission, agent rules. Separate rules find CLA, DCO, issue-first and assignment wording. Workflows are scanned for known actions and names; labels and check names for AI-related ones. Checklist items in pull request templates that ask about AI use or personal review are kept as `attestations`. [`src/classify.ts`](src/classify.ts) combines the tags; conflicts become **needs review**. Mentions of AI in repos whose subject is AI are ignored unless they match a rule.
+4. **Reviews.** Entries in `data/reviews.json` override a verdict. Each one cites a file and line and stores the file's blob id, so a changed file marks the review stale instead of silently keeping an old answer. Every review records who made it (`by`). The first pass (2026-10-26, `by: "claude-code"`) was done with Claude Code reading each cited file in full, and so was the second (2026-10-30: reviews whose sources had changed, and corrections found while contributing); corrections from people are very welcome.
 5. **Output.** `data/policies.json`, `data/policies.csv` and `data/meta.json`. The site in [`site/`](site/) is plain HTML and JavaScript and loads the JSON.
 
 **Rate limits.** One GraphQL query per repo (plus batched file reads), at most four in flight, a 400 ms gap between requests, and a pause until the reset time when the remaining budget gets low. GraphQL has no ETags, so file texts are cached per commit SHA in `.cache/snapshots/`: a repo whose default branch has not moved costs one query. The weekly Action keeps that cache between runs.
@@ -52,7 +53,8 @@ Each verdict also has a **status**: `auto` (keyword rules only), `reviewed` (set
 
 - Only the files listed above are read. Policies on websites, wikis, discussions or mailing lists are missed unless added to `extra-sources.json`.
 - Keyword rules are English-only and literal. A policy phrased in an unusual way may be missed or misread; that is what **needs review** and the correction process are for.
-- Anti-automation detection is name-based (known actions, workflow names, labels, check names on the last three PRs). A bot run from a private service is invisible.
+- Anti-automation detection is name-based (known actions, workflow names, labels, check names on the last three PRs) plus lines that address AI agents and ask them to mark their PRs. A bot run from a private service is invisible.
+- PR checkboxes are read from pull request templates only, not from issue forms or bot comments.
 - Only the first 100 labels plus AI-named labels are checked.
 - Only the default branch is read, as of the `checked` date.
 - Quotes are capped at 160 characters and stay under their repository's license.
@@ -89,7 +91,8 @@ The most durable fix is a clear sentence in your own CONTRIBUTING.md or an `AI_P
   "cla": { "value": true, "evidence": [ … ] }, "dco": { "value": null, "evidence": [] },
   "assignment_required": { "value": null, "evidence": [] },
   "outside_prs": { "value": "open", "evidence": [] }, "pr_creation_policy": "all",
-  "anti_automation": [{ "kind": "workflow", "name": "matteogabriele/agentscan-action", "url": "…" }],
+  "anti_automation": [{ "kind": "workflow", "name": "matteogabriele/agentscan-action", "url": "…" }],  // kind: workflow, label, check, pr_cap or doc
+  "attestations": [{ "path": ".github/PULL_REQUEST_TEMPLATE.md", "line": 11, "url": "…", "quote": "I am a human, and not a bot." }],
   "agent_files": ["AGENTS.md"], "sources": [{ "path": "CONTRIBUTING.md", "kind": "contributing", "scope": "repo", "url": "…" }]
 }
 ```

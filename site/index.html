@@ -48,6 +48,7 @@
         <label><input type="checkbox" id="f-issue"> Issue first</label>
         <label><input type="checkbox" id="f-closed"> Outside PRs limited</label>
         <label><input type="checkbox" id="f-anti"> Anti-automation signals</label>
+        <label><input type="checkbox" id="f-attest"> PR checkbox on AI use</label>
         <label><input type="checkbox" id="f-reviewed"> Reviewed only</label>
       </fieldset>
       <div class="downloads">
@@ -81,6 +82,7 @@
     <div class="wrap">
       <h2>How this works</h2>
       <p>A collector reads each repository's CONTRIBUTING, AI policy, AGENTS.md / CLAUDE.md, pull request templates, workflows and labels (plus the organisation's <code>.github</code> fallback) through the GitHub API, and applies keyword rules. Each verdict keeps the file and line it came from. Where the rules disagree or only partly match, the verdict is <em>Needs review</em> instead of a guess. Verdicts marked <span class="status reviewed">reviewed</span> were set by hand after reading the cited text; <code>data/reviews.json</code> records who reviewed each one and when. A review is flagged <span class="status review_stale">source changed</span> when the cited file changes.</p>
+      <p><strong>PR checkboxes</strong> are items in a repository's pull request template that ask about AI use or personal review, such as "I did not use AI to generate this PR" or "I am a human, and not a bot". <strong>Anti-automation signals</strong> include workflows and labels aimed at automated PRs, and lines in the docs that ask AI agents to identify themselves (for example with a marker in the PR title).</p>
       <p>Not stated means the files we read say nothing we recognise. It does not mean AI contributions are welcome. Policies can also live in places we do not read (wikis, websites, discussions).</p>
       <p><strong>Maintainers:</strong> if a verdict is wrong or out of date, <a id="correction-link" href="https://github.com/b84330808/ai-policy-map/issues/new?template=correction.yml">request a correction</a>.</p>
       <p class="meta">Data refreshed weekly. Last update: <span id="generated">…</span>. Code: MIT. Data: CC BY 4.0. <a href="https://github.com/b84330808/ai-policy-map">Source on GitHub</a>.</p>

@@ -19,6 +19,7 @@ const COLUMNS: [string, (r: PolicyRecord) => string | number | boolean | null][]
   ["outside_prs", (r) => r.outside_prs.value],
   ["pr_creation_policy", (r) => r.pr_creation_policy],
   ["anti_automation", (r) => r.anti_automation.map((s) => `${s.kind}:${s.name}`).join("; ")],
+  ["attestations", (r) => r.attestations.map((e) => e.quote).join("; ")],
   ["agent_files", (r) => r.agent_files.join("; ")],
   ["archived", (r) => r.archived],
   ["checked", (r) => r.checked],

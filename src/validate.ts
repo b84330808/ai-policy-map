@@ -9,6 +9,7 @@ const fail = (msg: string) => errors.push(msg);
 const records = JSON.parse(await readFile("data/policies.json", "utf8")) as PolicyRecord[];
 const reviews = JSON.parse(await readFile("data/reviews.json", "utf8")) as Reviews;
 const STATUSES = ["auto", "reviewed", "review_stale"];
+const SIGNAL_KINDS = ["workflow", "label", "check", "pr_cap", "doc"];
 const URL_RE = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+(\/|$)/;
 
 if (!Array.isArray(records) || records.length === 0) fail("policies.json is empty");
@@ -29,6 +30,8 @@ for (const r of records) {
   check("agent_prs", r.agent_prs, AGENT_VALUES);
   check("issue_first", r.issue_first, ISSUE_FIRST_VALUES);
   if (!OUTSIDE_PR_VALUES.includes(r.outside_prs.value)) fail(`${at}: outside_prs ${r.outside_prs.value}`);
+  for (const s of r.anti_automation) if (!SIGNAL_KINDS.includes(s.kind)) fail(`${at}: anti_automation has unknown kind ${s.kind}`);
+  for (const e of r.attestations ?? []) if (!URL_RE.test(e.url) || !e.line || !e.quote) fail(`${at}: attestation without a source line: ${e.url}`);
   if (r.ai_policy.quote && r.ai_policy.quote.length > 200) fail(`${at}: quote longer than 200 characters`);
 }
 

@@ -123,6 +123,7 @@ export function summarize(all: PolicyRecord[]) {
       issue_first: count((r) => r.issue_first.value),
       outside_prs: count((r) => r.outside_prs.value),
       anti_automation: count((r) => (r.anti_automation.length > 0 ? "yes" : "no")),
+      attestations: count((r) => (r.attestations.length > 0 ? "yes" : "no")),
     },
   };
 }
@@ -149,6 +150,8 @@ export function changeSummary(prev: PolicyRecord[], next: PolicyRecord[], missin
     if (p.outside_prs.value !== r.outside_prs.value) lines.push(`- \`${r.repo}\` outside PRs: ${p.outside_prs.value} → ${r.outside_prs.value}`);
     const sig = (x: PolicyRecord) => x.anti_automation.map((s) => `${s.kind}:${s.name}`).sort().join(", ");
     if (sig(p) !== sig(r)) lines.push(`- \`${r.repo}\` anti-automation: [${sig(p)}] → [${sig(r)}]`);
+    const boxes = (x: PolicyRecord) => (x.attestations ?? []).map((e) => e.quote).join(" | ");
+    if (boxes(p) !== boxes(r)) lines.push(`- \`${r.repo}\` PR checkboxes: ${(p.attestations ?? []).length} → ${r.attestations.length}`);
   }
   const gone = prev.filter((p) => !next.some((n) => n.repo === p.repo)).map((p) => p.repo);
   const stale = next.filter((r) => fields.some((f) => r[f].status === "review_stale")).map((r) => `\`${r.repo}\``);
