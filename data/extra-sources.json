@@ -2,14 +2,26 @@
   "PrefectHQ/prefect": [
     "docs/contribute/dev-contribute.mdx"
   ],
+  "django/django": [
+    "docs/internals/contributing/writing-code/submitting-patches.txt"
+  ],
   "electron/electron": [
     "electron/governance:policy/ai.md"
   ],
   "git/git": [
     "Documentation/SubmittingPatches"
   ],
+  "godotengine/godot": [
+    "godotengine/godot-contributing-docs:development/contribution_rules.rst"
+  ],
+  "jellyfin/jellyfin": [
+    "jellyfin/jellyfin.org:docs/general/contributing/llm-policies.md"
+  ],
   "llvm/llvm-project": [
     "llvm/docs/AIToolPolicy.md"
+  ],
+  "pandas-dev/pandas": [
+    "doc/source/development/contributing.rst"
   ],
   "python/cpython": [
     "python/devguide:getting-started/ai-tools.rst"
