@@ -12,6 +12,9 @@ import {
   LARGER_CHANGES,
   antiAutomationChecks,
   antiAutomationLabels,
+  asksAgentToSelfIdentify,
+  checkboxes,
+  isAttestation,
   scanWorkflow,
   sentences,
   tagSentence,
@@ -45,7 +48,10 @@ export type Verdict<V> = {
 
 export type Flag = { value: boolean | null; evidence: Evidence[] };
 
-export type Signal = { kind: "workflow" | "label" | "check" | "pr_cap"; name: string; url: string | null };
+/** doc: a line in the contribution docs that asks agents to identify themselves (e.g. a title marker). */
+export type Signal = { kind: "workflow" | "label" | "check" | "pr_cap" | "doc"; name: string; url: string | null };
+
+export const SELF_ID_SIGNAL = "asks agents to identify themselves";
 
 export type PolicyRecord = {
   repo: string;
@@ -65,6 +71,8 @@ export type PolicyRecord = {
   outside_prs: { value: OutsidePrs; evidence: Evidence[] };
   pr_creation_policy: string | null;
   anti_automation: Signal[];
+  /** PR-template checkboxes about AI use or personal, human review ("I am a human, and not a bot"). */
+  attestations: Evidence[];
   agent_files: string[];
   sources: { repo: string; path: string; kind: FileKind; scope: RepoFile["scope"]; url: string }[];
 };
@@ -115,12 +123,16 @@ function verdict<V>(value: V, hits: Hit[], note?: string): Verdict<V> {
   return { value, status: "auto", quote: evidence[0]?.quote ?? null, evidence, ...(note ? { note } : {}) };
 }
 
+const MAX_ATTESTATIONS = 6;
+
 const AI_SUBJECT = /\b(ai|llms?|language models?|gpt|agents?|agentic|machine learning|deep learning|neural|chatbot|rag|inference|generative|diffusion|transformers?|copilot|mcp)\b/i;
 
 export function classify(snap: RepoSnapshot, today = new Date().toISOString().slice(0, 10)): PolicyRecord {
   const hits: Hit[] = [];
   const signals: Signal[] = [];
   const workflowHits: { kind: string; ev: Evidence }[] = [];
+  const attestations: Evidence[] = [];
+  const aiSubject = AI_SUBJECT.test(snap.description ?? "");
 
   for (const f of snap.files) {
     if (f.kind === "workflow") {
@@ -134,13 +146,18 @@ export function classify(snap: RepoSnapshot, today = new Date().toISOString().sl
     const ctx = { agentFile: f.kind === "agents", strict: f.kind === "readme" };
     for (const s of sentences(f.text)) {
       for (const tag of tagSentence(s, ctx)) hits.push({ tag, file: f, line: s.line, text: s.text });
+      if (asksAgentToSelfIdentify(s.text, ctx.agentFile)) signals.push({ kind: "doc", name: SELF_ID_SIGNAL, url: blobUrl(f.repo, f.commit, f.path, s.line) });
+    }
+    if (f.kind === "pr_template") {
+      for (const c of checkboxes(f.text)) {
+        if (isAttestation(c.text, aiSubject) && attestations.length < MAX_ATTESTATIONS) attestations.push(toEvidence({ tag: "ai_attest", file: f, line: c.line, text: c.text }));
+      }
     }
   }
   const by = (...tags: Tag[]) => hits.filter((h) => tags.includes(h.tag));
 
   // --- AI policy ---
   // Mentions only count from policy-type files, and not at all in repos that are about AI.
-  const aiSubject = AI_SUBJECT.test(snap.description ?? "");
   const mentions = by("ai_mention").filter((h) => ["ai_policy", "contributing", "pr_template", "doc"].includes(h.file.kind) && (!aiSubject || h.file.kind === "ai_policy"));
   const ban = by("ai_ban");
   const cond = by("ai_ban_conditional");
@@ -238,6 +255,7 @@ export function classify(snap: RepoSnapshot, today = new Date().toISOString().sl
     outside_prs: outside,
     pr_creation_policy: snap.prCreationPolicy,
     anti_automation: dedupeSignals(signals),
+    attestations,
     agent_files: snap.paths.filter((p) => AGENT_FILE_RE.test(p)),
     sources: snap.files
       .filter((f) => f.kind !== "workflow")

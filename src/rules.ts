@@ -87,7 +87,9 @@ export function sentences(text: string): Sentence[] {
 
   lines.forEach((raw, i) => {
     const line = i + 1;
-    if (/^\s*(```|~~~)/.test(raw)) {
+    // A run of tildes right under a line of text underlines an RST heading; it does not open a fence.
+    const underline = !inFence && /^\s*~{3,}\s*$/.test(raw) && i > 0 && lines[i - 1]!.trim() !== "";
+    if (/^\s*(```|~~~)/.test(raw) && !underline) {
       flush();
       inFence = !inFence;
       return;
@@ -114,7 +116,7 @@ export function sentences(text: string): Sentence[] {
 
 // "Cursor", "OpenAI" and "ML models" are left out on purpose: too many false hits
 // (text cursors, API docs of AI libraries).
-const AI_NAME = String.raw`(?:ai|a\.i\.|llms?|genai|gen-ai|generative[- ]ai|(?:large )?language models?|chat ?gpt|gpt-?[3-5o]\w*|copilot|claude(?: code)?|gemini|codex|devin|windsurf|aider)`;
+const AI_NAME = String.raw`(?:ai|a\.i\.|llms?|genai|gen-ai|generative[- ]ai|(?:generative )?artificial intelligence|(?:large )?language models?|chat ?gpt|gpt-?[3-5o]\w*|copilot|claude(?: code)?|gemini|codex|devin|windsurf|aider)`;
 const AI_PRODUCED = String.raw`(?:generated|assisted|authored|written|created|produced|driven|aided|powered|made|based|crafted)`;
 
 /** AI used as an authoring tool: the trigger for AI-policy rules. */
@@ -175,18 +177,33 @@ const CODE_WORDS = /\b(code|patch(es)?|changes?|implementation|commits?|contribu
 const AGENT = /\b(autonomous(ly)?|agentic|unattended|fully[- ]automated|automated (pull requests|prs|contributions|submissions|tools?|accounts?|agents?|systems?)|(ai|llm|coding|autonomous|software|ai coding) agents?|ai bots?|bots?|claws?|openclaw|devin|swe-agent|agents? (that )?(open|opening|create|creating|submit\w*|file|filing)|without (a |any )?human( (involvement|oversight|review|intervention|in the loop|supervision))?|human[- ]in[- ]the[- ]loop|on (your|their) (own|behalf))\b/i;
 const HUMAN_REQUIRED = /\b(must (be|have) (a |been )?(human|person)|(a |the )?human (must|has to|needs to|should|is required)|require[sd]? (a |the )?human|requires? human|human[- ](reviewed|verified|supervised|driven|authored|submitted|operated)|human[- ]in[- ]the[- ]loop|by a (human|person)|a real person|real human|person must|you must (review|understand|verify|be able to explain)|ask (the|your) (user|human)|without (the |explicit )?(user's|user|human)( explicit)? (approval|permission|consent|confirmation))\b/i;
 const SELF_ADDRESS = /\b(if|when) you(?:'re| are) an? (ai|llm|language model|bot|agent|coding agent|ai agent|ai assistant|automated (tool|agent|system))\b/i;
+/** Wider than SELF_ADDRESS: "If you are an automated LLM agent", "Note for AI tools". */
+const AGENT_ADDRESS = new RegExp(
+  String.raw`\b(?:if|when) you(?:'re| are) (?!(?:using|running|driving|directing|considering|looking|allowed|working|planning|an? (?:individual|entity|employee))\b)(?:an? |the )?(?:[\w-]+ ){0,3}?(?:${AI_NAME}|bots?|agents?|assistants?)\b(?! (?:product|team|company|framework|platform|library))|\b(?:note|message) (?:for|to) (?:ai|llms?|agents?|bots?|automated)\b`,
+  "i",
+);
+/** "Automated agents may add …": agents named in the third person. */
+const AGENTS_SUBJECT = /\b(automated|autonomous|ai|llm|coding) (agents?|assistants?) (may|must|should|can|are asked to|need to)\b/i;
+/** A literal marker: 🤖, a hidden HTML comment, "[auto-generated]". */
+const MARKER_TOKEN = /🤖|\bhtml comment\b|\[(auto[- ]?generated|ai|bot|llm)\b[^\]]*\]/i;
+/** An instruction to add it, not a description of what tools do by default. */
+const ADD_MARKER = /\b(must|should|please|always|required to)\b[^.]{0,40}\b(add|include|append|prefix|put)\b|(^|[,:;>]\s*)(add|include|append|prefix|put)\b/i;
+/** What such a line asks for: a title marker, a fixed phrase, a canary, or a promised fast track. */
+const SELF_ID = /\b(add|include|put|prefix|append|start|begin|mark|tag|preface|write|use)\b[^.]{0,80}\b(title|pr description|description section|header|heading)\b|\b(rhyme|poem|haiku|limerick)\b|\b(streamlined|special|expedited|fast[- ]?track\w*|priority) (process|path|lane|handling|review|processing)\b|\bfast[- ]track\b/i;
 const OPEN_PR = /\b(open|opening|create|creating|submit|submitting|file|filing|send|sending|push|pushing|make|making)\s+(a |an |any |the |new |your )*(pull requests?|prs?|issues?|merge requests?)\b/i;
 
 const CLA_WORDS = /\b(contributor('s)? licen[cs]e agreement|cla[- ]assistant|easycla|(individual|corporate|entity) (contributor )?licen[cs]e agreement|sign(ed|ing)? (the |our |a )?(cla|contributor agreement)|contributor agreement|copyright assignment|cla\.developers\.google\.com)\b/i;
 const CLA_ABBR = /\bCLAs?\b/;
-const CLA_NEG = /\b(no|not|without|don't|do not|doesn't|does not|never)\b[^.]{0,30}\b(cla|contributor licen[cs]e agreement|contributor agreement|sign)\b|\b(cla|contributor licen[cs]e agreement)\b[^.]{0,30}\b(is )?(not (required|needed|necessary)|no longer)\b/i;
+const CLA_NEG = /\b(no|not|without|don't|do not|doesn't|does not|never)\b[^.]{0,30}\b(cla|contributor licen[cs]e agreement|contributor agreement|sign)\b|\b(cla|contributor licen[cs]e agreement)\b[^.]{0,30}\b(is )?(not (required|needed|necessary)|no longer|optional)\b|\b(the option to|at your option|optionally)\b[^.]{0,40}\b(sign|submit|cla|contributor licen[cs]e agreement)\b/i;
+/** "Contributor License Agreement: https://…" is a link target, not a rule. */
+const LINK_TARGET = /^[^:]{1,80}:\s*<?https?:\/\/\S+>?$/;
 const DCO_WORDS = /(\bdeveloper certificate of origin\b|\bsigned-off-by\b|--signoff\b|\bgit commit -\w*s\b|\bcommit -s\b|\bsign[- ]off (your|all|each|every) commits?\b|\bsign (your|all|each|every) commits? off\b)/i;
 const DCO_ABBR = /\bDCO\b/;
 const DCO_NEG = /\b(no|not|don't|do not|doesn't|does not|without|never)\b[^.]{0,30}\b(dco|sign[- ]?off|signed-off-by)/i;
 
 const ISSUE_FIRST = [
   /\b(open|create|file|start|raise|submit)\s+(an?\s+|the\s+)?(issue|discussion|proposal|rfc|feature request|ticket)s?\b[^.]{0,100}\b(first|before|prior)\b/i,
-  /\b(before|prior to)\s+(you\s+)?(start(ing)? (to )?(work|working|coding|on|implement\w*)|begin(ning)? (work|coding|on)|(open(ing)?|submit(ting)?|send(ing)?|creat(e|ing)|mak(e|ing)) (a |your |any )?(new )?(pull requests?|prs?|patch(es)?|merge requests?)|work(ing)? on|writ(e|ing) (any )?(code|a patch)|mak(e|ing) (a |any )?(significant |large |major |non-trivial )?(changes?|contributions?)|implement(ing)?)\b[^.]{0,100}\b(issue|discuss\w*|approv\w*|agree\w*|assign\w*|consensus|go-?ahead)/i,
+  /\b(before|prior to)\s+(you\s+)?(start(ing)? (to )?(work|working|coding|on|implement\w*)|begin(ning)? (work|coding|on)|(open(ing)?|submit(ting)?|send(ing)?|creat(e|ing)|mak(e|ing)) (a |your |any )?(new )?(pull requests?|prs?|patch(es)?|merge requests?)|work(ing)? on|writ(e|ing) (any )?(code|a patch)|mak(e|ing) (a |any )?(significant |large |major |non-trivial )?(changes?|contributions?)|implement(ing)?)\b[^.]{0,100}\b(issue|discuss\w*|(?<!ci )approv\w*|agree\w*|assign\w*|consensus|go-?ahead)/i,
   /\b(pull requests?|prs?|patches|contributions?|changes)\b[^.]{0,40}\b(without|not linked to|not tied to|not associated with|that (do not|don't) (reference|link|address))\s+(an?\s+|the\s+)?(approved\s+|accepted\s+|existing\s+|linked\s+|associated\s+|corresponding\s+|prior\s+)?(issue|discussion)/i,
   /\bmust\s+(first\s+)?(be\s+)?(reference|link|address|close|fix|resolve|correspond)\w*\s+(to\s+)?(an?\s+|the\s+)?(existing\s+|open\s+|approved\s+|accepted\s+)?issue/i,
   /\b(discuss|propose)\w*\b[^.]{0,60}\b(first|before)\b[^.]{0,60}\b(pull request|pr|patch|implementation|work|code)/i,
@@ -221,7 +238,7 @@ export function tagSentence(s: Sentence, ctx: FileContext): Set<Tag> {
   const tags = new Set<Tag>();
 
   // CLA / DCO / issue-first are independent of AI wording.
-  if (CLA_WORDS.test(t) || CLA_ABBR.test(t)) tags.add(CLA_NEG.test(t) ? "cla_negated" : "cla");
+  if ((CLA_WORDS.test(t) || CLA_ABBR.test(t)) && !LINK_TARGET.test(t)) tags.add(CLA_NEG.test(t) ? "cla_negated" : "cla");
   if ((DCO_WORDS.test(t) || DCO_ABBR.test(t)) && !DCO_NEG.test(t)) tags.add("dco");
   if (ISSUE_FIRST.some((re) => re.test(t))) tags.add(NOT_NEEDED.test(t) ? "issue_first_negated" : "issue_first");
   if (ASSIGNMENT.test(t) && /\b(issues?|work|tasks?|prs?|pull requests?)\b/i.test(t)) {
@@ -273,6 +290,52 @@ export function tagSentence(s: Sentence, ctx: FileContext): Set<Tag> {
   if (allow && !banned) tags.add("ai_allow");
   if (tags.size === 0 || ![...tags].some((x) => x.startsWith("ai_"))) tags.add("ai_mention");
   return tags;
+}
+
+/**
+ * "If you are an AI agent, add 🤖 to the PR title": a line that asks agents to
+ * identify themselves so maintainers can spot or filter their PRs.
+ */
+export function asksAgentToSelfIdentify(text: string, agentFile = false): boolean {
+  if (AGENT_ADDRESS.test(text) && SELF_ID.test(text)) return true;
+  // Agent files address agents throughout; there, only a literal marker counts.
+  if (!MARKER_TOKEN.test(text)) return false;
+  return (AGENTS_SUBJECT.test(text) && /\b(add|include|append|prefix|put)\b/i.test(text)) || (agentFile && ADD_MARKER.test(text));
+}
+
+// --- PR-template checkboxes --------------------------------------------------
+
+const CHECKBOX = /^\s*[-*+]\s+\[[ xX]\]\s+/;
+const AI_WORD = new RegExp(String.raw`\b${AI_NAME}\b`, "i");
+/** File paths such as `.claude/skills/create-pr/SKILL.md` say nothing about AI use. */
+const isPath = (token: string) => token.includes("/") && (/^\W*\./.test(token) || token.includes("/.") || /\.\w{1,5}\W*$/.test(token));
+/** Personal or human review, authorship or testing: "I am a human, and not a bot", "I have tested it myself". */
+const HUMAN_ATTEST = /\b((i am|i'm) (a )?human|not a bot|as a human|(i|you), a human|a human (wrote|authored|reviewed|has)|(written|authored|reviewed) by a human|(agent|bot)s? (wrote|authored|generated|created) it|(tested|reviewed|verified)\b[^.]{0,30}\b(myself|personally)|personally (reviewed|tested|verified))\b/i;
+
+/** Checklist items of a markdown file, continuation lines joined, the box removed. */
+export function checkboxes(text: string): Sentence[] {
+  const lines = text.split(/\r?\n/);
+  const out: Sentence[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (!CHECKBOX.test(lines[i]!)) continue;
+    const line = i + 1;
+    let item = lines[i]!.replace(CHECKBOX, "");
+    while (i + 1 < lines.length && lines[i + 1]!.trim() !== "" && !LIST_ITEM.test(lines[i + 1]!) && !HEADING.test(lines[i + 1]!) && !RST_UNDERLINE.test(lines[i + 1]!) && !/^\s*<!--/.test(lines[i + 1]!)) {
+      item += " " + lines[++i];
+    }
+    const t = clean(item);
+    if (t.length > 2) out.push({ line, text: t });
+  }
+  return out;
+}
+
+/** A PR-template checkbox about AI use or about personal, human review. In repos about AI, only AI-as-a-tool wording counts. */
+export function isAttestation(text: string, aiSubject: boolean): boolean {
+  const t = text
+    .split(/\s+/)
+    .map((w) => (isPath(w) ? "_" : w))
+    .join(" ");
+  return AI_TOOL.test(t) || (!aiSubject && AI_WORD.test(t)) || HUMAN_ATTEST.test(t);
 }
 
 /** True when `re` matches somewhere that is not just after a negation. */
@@ -368,4 +431,4 @@ export const CLA_FILE = /(^|\/)(cla|CLA)([-_][\w-]+)?(\.(md|txt|rst|pdf))?$|(^|\
 export const DCO_FILE = /(^|\/)(\.github\/)?dco\.ya?ml$|(^|\/)DCO(\.(md|txt))?$/;
 
 /** The sentence patterns, exported for tests and debugging. */
-export const PATTERNS = { AI_TOOL, BAN_VERBS, BAN_WORDS, BAN_NO, DO_NOT_USE, CONDITION, DISCLOSE, ALLOW, COMMS, OWN_WORDS, CODE_WORDS, AGENT, HUMAN_REQUIRED, SELF_ADDRESS, OPEN_PR, STOP };
+export const PATTERNS = { AI_TOOL, BAN_VERBS, BAN_WORDS, BAN_NO, DO_NOT_USE, CONDITION, DISCLOSE, ALLOW, COMMS, OWN_WORDS, CODE_WORDS, AGENT, HUMAN_REQUIRED, SELF_ADDRESS, AGENT_ADDRESS, AGENTS_SUBJECT, SELF_ID, MARKER_TOKEN, OPEN_PR, STOP, HUMAN_ATTEST };

@@ -14,9 +14,11 @@ const ISSUE_LABELS = { required: "Required", for_larger_changes: "For larger cha
 const OUTSIDE_LABELS = { open: "Open", collaborators_only: "Collaborators only", disabled: "PRs disabled", not_accepted: "Not accepted" };
 const STATUS_LABELS = { auto: "keyword match", reviewed: "reviewed", review_stale: "source changed" };
 const STRICTNESS = { banned: 0, human_text_only: 1, allowed_with_disclosure: 2, needs_review: 3, allowed: 4, not_stated: 5 };
+const SIGNAL_KINDS = { workflow: "workflow", label: "label", check: "check", pr_cap: "setting", doc: "docs" };
+const FLAGS = ["cla", "dco", "issue", "closed", "anti", "attest", "reviewed"];
 
 const $ = (id) => document.getElementById(id);
-const state = { q: "", ai: "", agent: "", lang: "", sort: "stars", cla: false, dco: false, issue: false, closed: false, anti: false, reviewed: false };
+const state = { q: "", ai: "", agent: "", lang: "", sort: "stars", cla: false, dco: false, issue: false, closed: false, anti: false, attest: false, reviewed: false };
 let data = [];
 const open = new Set();
 
@@ -56,7 +58,7 @@ function syncControls() {
   $("f-agent").value = state.agent;
   $("f-lang").value = state.lang;
   $("sort").value = state.sort;
-  for (const k of ["cla", "dco", "issue", "closed", "anti", "reviewed"]) $(`f-${k}`).checked = state[k];
+  for (const k of FLAGS) $(`f-${k}`).checked = state[k];
 }
 
 function matches(r) {
@@ -72,6 +74,7 @@ function matches(r) {
   if (state.issue && !["required", "for_larger_changes"].includes(r.issue_first.value) && r.assignment_required.value !== true) return false;
   if (state.closed && r.outside_prs.value === "open") return false;
   if (state.anti && r.anti_automation.length === 0) return false;
+  if (state.attest && attestations(r).length === 0) return false;
   if (state.reviewed && ![r.ai_policy.status, r.agent_prs.status].includes("reviewed")) return false;
   return true;
 }
@@ -105,6 +108,16 @@ function sourceLink(v) {
   return el("div", { class: "sub" }, el("a", { href: e.url, target: "_blank", rel: "noopener", text: where, onclick: "event.stopPropagation()" }));
 }
 
+function attestations(r) {
+  return r.attestations ?? [];
+}
+
+function attestNote(r) {
+  const boxes = attestations(r);
+  if (!boxes.length) return null;
+  return el("div", { class: "sub attest", title: boxes.map((e) => `☐ ${e.quote}`).join("\n"), text: `☑ ${boxes.length} PR checkbox${boxes.length > 1 ? "es" : ""}` });
+}
+
 function renderRow(r) {
   const tr = el("tr", { class: "row", tabindex: "0", "aria-expanded": open.has(r.repo) ? "true" : "false" });
   const claDco = [r.cla.value ? "CLA" : null, r.dco.value ? "DCO" : null].filter(Boolean);
@@ -113,7 +126,7 @@ function renderRow(r) {
     el("td", { class: "repo", "data-label": "Repository" },
       el("a", { href: r.url, target: "_blank", rel: "noopener", text: r.repo, onclick: "event.stopPropagation()" }),
       el("div", { class: "sub", text: [r.language, `★ ${fmtStars(r.stars)}`, r.archived ? "archived" : null].filter(Boolean).join(" · ") })),
-    el("td", { "data-label": "AI-assisted contributions" }, badge(r.ai_policy.value, AI_LABELS), statusTag(r.ai_policy), sourceLink(r.ai_policy)),
+    el("td", { "data-label": "AI-assisted contributions" }, badge(r.ai_policy.value, AI_LABELS), statusTag(r.ai_policy), sourceLink(r.ai_policy), attestNote(r)),
     el("td", { "data-label": "Agents opening PRs" }, badge(r.agent_prs.value, AGENT_LABELS), statusTag(r.agent_prs), sourceLink(r.agent_prs)),
     el("td", { "data-label": "CLA / DCO" }, claDco.length ? claDco.join(" + ") : el("span", { class: "dash", text: "—" })),
     el("td", { "data-label": "Issue first" }, issue ? issue : el("span", { class: "dash", text: "—" }), r.assignment_required.value ? el("div", { class: "sub", text: "assignment asked" }) : null),
@@ -164,7 +177,12 @@ function flagBlock(title, f) {
 
 function renderDetail(r) {
   const signals = r.anti_automation.length
-    ? el("ul", {}, r.anti_automation.map((s) => el("li", {}, `${s.kind}: `, s.url ? el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.name }) : s.name)))
+    ? el("ul", {}, r.anti_automation.map((s) => el("li", {}, `${SIGNAL_KINDS[s.kind] ?? s.kind}: `, s.url ? el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.name }) : s.name)))
+    : el("p", { class: "note", text: "None found." });
+  const boxes = attestations(r).length
+    ? el("ul", {}, attestations(r).map((e) => el("li", {},
+        el("a", { href: e.url, target: "_blank", rel: "noopener", text: `${e.repo && e.repo !== r.repo ? `${e.repo}/` : ""}${e.path}:${e.line}` }),
+        el("blockquote", { text: `☐ ${e.quote}` }))))
     : el("p", { class: "note", text: "None found." });
   const sources = r.sources.length
     ? el("ul", {}, r.sources.map((s) => el("li", {}, el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.repo === r.repo ? s.path : `${s.repo}/${s.path}` }), s.scope !== "repo" ? ` (${s.scope})` : "")))
@@ -177,6 +195,7 @@ function renderDetail(r) {
       flagBlock("CLA", r.cla),
       flagBlock("DCO sign-off", r.dco),
       el("div", {}, el("h3", { text: "Anti-automation signals" }), signals),
+      el("div", {}, el("h3", { text: "PR checkboxes on AI use" }), boxes),
       el("div", {}, el("h3", { text: "Files read" }), sources,
         r.agent_files.length ? el("p", { class: "note", text: `Agent instruction files: ${r.agent_files.join(", ")}` }) : null,
         el("p", { class: "note" }, `Checked ${r.checked}`, r.commit ? ` at ${r.commit.slice(0, 7)}` : "", ". ",
@@ -253,7 +272,7 @@ async function main() {
       render();
     });
   }
-  for (const k of ["cla", "dco", "issue", "closed", "anti", "reviewed"]) {
+  for (const k of FLAGS) {
     $(`f-${k}`).addEventListener("change", (e) => {
       state[k] = e.target.checked;
       render();
