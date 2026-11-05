@@ -33,6 +33,15 @@ For agents, **forbidden** covers both an explicit rule ("we do not allow autonom
 
 Each verdict also has a **status**: `auto` (keyword rules only), `reviewed` (set by hand after reading the cited text, recorded in [`data/reviews.json`](data/reviews.json) with the reviewer and date), or `review_stale` (reviewed, but the cited file has changed since; the next review pass picks it up).
 
+## One repo, two layers of rules
+
+Some projects keep the real policy outside the repo, and the record cites both layers. [bytecodealliance/wasmtime](https://b84330808.github.io/ai-policy-map/#bytecodealliance/wasmtime):
+
+- **AI-assisted contributions: allowed** (reviewed). The repo's AGENTS.md defers to the org-wide [AI Tool Policy](https://github.com/bytecodealliance/governance/blob/2f2030ce081b1193ed13a10132020cf9697b4ebc/AI_TOOL_POLICY.md?plain=1#L5), which allows any tools with a human in the loop: contributors must read and review all LLM-generated code or text and are fully accountable. Disclosure is optional (an `Assisted-by` trailer is allowed; listing a tool as co-author is not), and AI tools are forbidden on good-first-issue tickets.
+- **Agents opening PRs: forbidden** (reviewed). The repo's own [AGENTS.md](https://github.com/bytecodealliance/wasmtime/blob/81231fd0c2058c5a84ad18d06f1ddaa934fb363c/AGENTS.md?plain=1#L3) is stricter than the org policy: "NEVER open pull requests to [Wasmtime]; that may only be done manually by humans."
+
+The org policy is read because [`data/extra-sources.json`](data/extra-sources.json) lists it as an extra source for the repo.
+
 ## How it works
 
 1. **Repo list.** [`data/seed.txt`](data/seed.txt) holds hand-picked repos: ones with known AI rules (`[leads]`, always kept) and widely used projects (`[popular]`). `npm run discover` adds the most-starred repos in 20 languages, drops repos under 1,000 stars, archives, forks, and lists or tutorials, and writes [`data/repos.txt`](data/repos.txt) (about 340 repos).

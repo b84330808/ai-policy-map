@@ -193,6 +193,9 @@ fish-shell/fish-shell
 jqlang/jq
 cli/cli
 mitchellh/vouch
+celery/celery
+harfbuzz/harfbuzz
+grafana/k6
 
 [popular]
 tldraw/tldraw
@@ -289,7 +292,6 @@ psf/requests
 encode/httpx
 pydantic/pydantic
 sqlalchemy/sqlalchemy
-celery/celery
 scrapy/scrapy
 ansible/ansible
 python-poetry/poetry

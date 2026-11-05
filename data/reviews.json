@@ -302,20 +302,21 @@
   },
   "bytecodealliance/wasmtime": {
     "ai_policy": {
-      "verdict": "needs_review",
-      "reviewed": "2026-10-26",
+      "verdict": "allowed",
+      "reviewed": "2026-11-05",
       "by": "claude-code",
-      "auto": "allowed_with_disclosure",
-      "note": "Refers to the Bytecode Alliance AI Tool Use Policy, which this crawler does not read; only humans may be commit authors.",
+      "auto": "human_text_only",
+      "note": "The org-wide AI Tool Policy (now read via extra-sources) allows any tools with a human in the loop: contributors must read and review all LLM-generated code or text and are fully accountable. Disclosure is optional (an Assisted-by trailer is allowed; listing a tool as co-author is not), and AI tools are forbidden on good-first-issue tickets. The repo's own AGENTS.md is stricter about agents — see agent_prs.",
       "source": {
-        "path": "AGENTS.md",
-        "line": 1
+        "repo": "bytecodealliance/governance",
+        "path": "AI_TOOL_POLICY.md",
+        "line": 5
       },
-      "oid": "d94ea857cb524ce2024340504c7e0699e78a7a65"
+      "oid": "35222c2eb0cde8b00a56b8b4027c8ae3f5759306"
     },
     "agent_prs": {
       "verdict": "forbidden",
-      "reviewed": "2026-10-26",
+      "reviewed": "2026-11-05",
       "by": "claude-code",
       "auto": "forbidden",
       "source": {
@@ -402,6 +403,32 @@
         "line": 120
       },
       "oid": "d931cbbf584e4482c6454a934c6c12f4b5038061"
+    }
+  },
+  "celery/celery": {
+    "ai_policy": {
+      "verdict": "allowed",
+      "reviewed": "2026-11-05",
+      "by": "claude-code",
+      "auto": "banned",
+      "note": "AI-assisted work is allowed under the Anti AI Spam Policy (discussion #10932), but the person is accountable for everything sent: they read each post before it goes out and must be able to explain and test every change. Work only on issues a maintainer has confirmed, keep one PR open until your first merge, and never post from a loop or on a schedule. Abuse of AI tools can get an account blocked, and one has been.",
+      "source": {
+        "path": ".github/Agents.md",
+        "line": 7
+      },
+      "oid": "e4723d86fccd1a3b1f59a909f2096a5005162734"
+    },
+    "agent_prs": {
+      "verdict": "forbidden",
+      "reviewed": "2026-11-05",
+      "by": "claude-code",
+      "auto": "forbidden",
+      "note": "Agents may do the work, but nothing is posted until the person responsible has read it; posting from a loop or on a schedule is banned outright.",
+      "source": {
+        "path": ".github/Agents.md",
+        "line": 7
+      },
+      "oid": "e4723d86fccd1a3b1f59a909f2096a5005162734"
     }
   },
   "chen08209/FlClash": {
@@ -1209,6 +1236,20 @@
         "line": 39
       },
       "oid": "825932e1fbb55490745baf9f4ef57cf9eced3967"
+    }
+  },
+  "harfbuzz/harfbuzz": {
+    "ai_policy": {
+      "verdict": "allowed_with_disclosure",
+      "reviewed": "2026-11-05",
+      "by": "claude-code",
+      "auto": "needs_review",
+      "note": "The Code of AI Conduct accepts AI-assisted contributions, with the contributor fully responsible end to end. Meaningful AI help takes an Assisted-by: trailer in the commit message, and the PR description must state what was verified locally — the exact commands run — and call out anything that was skipped or is uncertain.",
+      "source": {
+        "path": "CODE_OF_AI_CONDUCT.md",
+        "line": 29
+      },
+      "oid": "0fb405a3c4117175719d2661e78c1bb65c0ccdfb"
     }
   },
   "hashicorp/terraform": {
@@ -2235,9 +2276,10 @@
   "openssl/openssl": {
     "ai_policy": {
       "verdict": "allowed_with_disclosure",
-      "reviewed": "2026-10-26",
+      "reviewed": "2026-11-05",
       "by": "claude-code",
       "auto": "allowed_with_disclosure",
+      "note": "The ICLA itself covers AI assistance (v1.1, clauses 8 and 9): disclose AI involvement, and a human must have reviewed the contribution before it is submitted.",
       "source": {
         "path": "CONTRIBUTING.md",
         "line": 110
@@ -3242,10 +3284,10 @@
   "traefik/traefik": {
     "ai_policy": {
       "verdict": "human_text_only",
-      "reviewed": "2026-10-26",
+      "reviewed": "2026-11-05",
       "by": "claude-code",
       "auto": "needs_review",
-      "note": "Assisted-by trailer for substantial AI help (line 107); align with a maintainer before larger changes.",
+      "note": "Substantial AI help is disclosed with an Assisted-by: line in the PR description; AI trailers are banned from commit messages. Align with a maintainer before changes larger than a bug fix.",
       "source": {
         "path": "AGENTS.md",
         "line": 108

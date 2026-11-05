@@ -2,6 +2,9 @@
   "PrefectHQ/prefect": [
     "docs/contribute/dev-contribute.mdx"
   ],
+  "bytecodealliance/wasmtime": [
+    "bytecodealliance/governance:AI_TOOL_POLICY.md"
+  ],
   "django/django": [
     "docs/internals/contributing/writing-code/submitting-patches.txt"
   ],
@@ -13,6 +16,9 @@
   ],
   "godotengine/godot": [
     "godotengine/godot-contributing-docs:development/contribution_rules.rst"
+  ],
+  "harfbuzz/harfbuzz": [
+    "CODE_OF_AI_CONDUCT.md"
   ],
   "jellyfin/jellyfin": [
     "jellyfin/jellyfin.org:docs/general/contributing/llm-policies.md"

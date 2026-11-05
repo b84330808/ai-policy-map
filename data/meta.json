@@ -1,50 +1,50 @@
 {
-  "generated": "2026-10-30",
-  "repos": 340,
+  "generated": "2026-11-05",
+  "repos": 343,
   "counts": {
     "ai_policy": {
-      "not_stated": 135,
+      "not_stated": 136,
       "banned": 21,
       "human_text_only": 68,
-      "allowed": 41,
-      "allowed_with_disclosure": 71,
-      "needs_review": 4
+      "allowed": 43,
+      "allowed_with_disclosure": 72,
+      "needs_review": 3
     },
     "ai_policy_status": {
-      "auto": 122,
-      "reviewed": 218
+      "auto": 123,
+      "reviewed": 220
     },
     "agent_prs": {
-      "not_stated": 271,
-      "forbidden": 69
+      "not_stated": 273,
+      "forbidden": 70
     },
     "cla": {
-      "null": 266,
-      "true": 70,
+      "null": 268,
+      "true": 71,
       "false": 4
     },
     "dco": {
-      "null": 314,
+      "null": 317,
       "true": 26
     },
     "issue_first": {
-      "not_stated": 211,
-      "for_larger_changes": 32,
-      "required": 94,
+      "not_stated": 212,
+      "for_larger_changes": 33,
+      "required": 95,
       "not_required": 3
     },
     "outside_prs": {
-      "open": 305,
+      "open": 308,
       "collaborators_only": 23,
       "not_accepted": 8,
       "disabled": 4
     },
     "anti_automation": {
-      "no": 272,
+      "no": 275,
       "yes": 68
     },
     "attestations": {
-      "no": 294,
+      "no": 297,
       "yes": 46
     }
   }

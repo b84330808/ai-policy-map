@@ -2879,22 +2879,22 @@
     "checked": "2026-10-30",
     "commit": "81231fd0c2058c5a84ad18d06f1ddaa934fb363c",
     "ai_policy": {
-      "value": "needs_review",
+      "value": "allowed",
       "status": "reviewed",
-      "quote": "ALWAYS abide by the [Bytecode Alliance AI Tool Use Policy].",
+      "quote": "Contributors must read and review all LLM-generated code or text before they ask other project members to review it.",
       "evidence": [
         {
-          "repo": "bytecodealliance/wasmtime",
-          "path": "AGENTS.md",
-          "line": 1,
-          "url": "https://github.com/bytecodealliance/wasmtime/blob/81231fd0c2058c5a84ad18d06f1ddaa934fb363c/AGENTS.md?plain=1#L1",
-          "quote": "ALWAYS abide by the [Bytecode Alliance AI Tool Use Policy]."
+          "repo": "bytecodealliance/governance",
+          "path": "AI_TOOL_POLICY.md",
+          "line": 5,
+          "url": "https://github.com/bytecodealliance/governance/blob/2f2030ce081b1193ed13a10132020cf9697b4ebc/AI_TOOL_POLICY.md?plain=1#L5",
+          "quote": "Contributors must read and review all LLM-generated code or text before they ask other project members to review it."
         }
       ],
-      "note": "Refers to the Bytecode Alliance AI Tool Use Policy, which this crawler does not read; only humans may be commit authors.",
+      "note": "The org-wide AI Tool Policy (now read via extra-sources) allows any tools with a human in the loop: contributors must read and review all LLM-generated code or text and are fully accountable. Disclosure is optional (an Assisted-by trailer is allowed; listing a tool as co-author is not), and AI tools are forbidden on good-first-issue tickets. The repo's own AGENTS.md is stricter about agents — see agent_prs.",
       "review": {
         "by": "claude-code",
-        "date": "2026-10-26"
+        "date": "2026-11-05"
       }
     },
     "agent_prs": {
@@ -2912,7 +2912,7 @@
       ],
       "review": {
         "by": "claude-code",
-        "date": "2026-10-26"
+        "date": "2026-11-05"
       }
     },
     "cla": {
@@ -3003,6 +3003,13 @@
         "kind": "readme",
         "scope": "repo",
         "url": "https://github.com/bytecodealliance/wasmtime/blob/81231fd0c2058c5a84ad18d06f1ddaa934fb363c/README.md?plain=1"
+      },
+      {
+        "repo": "bytecodealliance/governance",
+        "path": "AI_TOOL_POLICY.md",
+        "kind": "doc",
+        "scope": "extra",
+        "url": "https://github.com/bytecodealliance/governance/blob/2f2030ce081b1193ed13a10132020cf9697b4ebc/AI_TOOL_POLICY.md?plain=1"
       }
     ]
   },
@@ -3479,6 +3486,149 @@
         "kind": "readme",
         "scope": "repo",
         "url": "https://github.com/capricorn86/happy-dom/blob/5e100dedb73111a276f75a3daff3a506e2524759/README.md?plain=1"
+      }
+    ]
+  },
+  {
+    "repo": "celery/celery",
+    "url": "https://github.com/celery/celery",
+    "description": "Distributed Task Queue (development branch)",
+    "stars": 29136,
+    "language": "Python",
+    "archived": false,
+    "checked": "2026-11-05",
+    "commit": "6fcdbf904d410749ad7676d8ff6b1b25d6e19675",
+    "ai_policy": {
+      "value": "allowed",
+      "status": "reviewed",
+      "quote": "The person you work for is responsible for everything sent to GitHub: issues, pull requests, comments, and reviews.",
+      "evidence": [
+        {
+          "repo": "celery/celery",
+          "path": ".github/Agents.md",
+          "line": 7,
+          "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/Agents.md?plain=1#L7",
+          "quote": "The person you work for is responsible for everything sent to GitHub: issues, pull requests, comments, and reviews."
+        }
+      ],
+      "note": "AI-assisted work is allowed under the Anti AI Spam Policy (discussion #10932), but the person is accountable for everything sent: they read each post before it goes out and must be able to explain and test every change. Work only on issues a maintainer has confirmed, keep one PR open until your first merge, and never post from a loop or on a schedule. Abuse of AI tools can get an account blocked, and one has been.",
+      "review": {
+        "by": "claude-code",
+        "date": "2026-11-05"
+      }
+    },
+    "agent_prs": {
+      "value": "forbidden",
+      "status": "reviewed",
+      "quote": "The person you work for is responsible for everything sent to GitHub: issues, pull requests, comments, and reviews.",
+      "evidence": [
+        {
+          "repo": "celery/celery",
+          "path": ".github/Agents.md",
+          "line": 7,
+          "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/Agents.md?plain=1#L7",
+          "quote": "The person you work for is responsible for everything sent to GitHub: issues, pull requests, comments, and reviews."
+        }
+      ],
+      "note": "Agents may do the work, but nothing is posted until the person responsible has read it; posting from a loop or on a schedule is banned outright.",
+      "review": {
+        "by": "claude-code",
+        "date": "2026-11-05"
+      }
+    },
+    "cla": {
+      "value": null,
+      "evidence": []
+    },
+    "dco": {
+      "value": null,
+      "evidence": []
+    },
+    "issue_first": {
+      "value": "required",
+      "status": "auto",
+      "quote": "Before opening an AI based PR make sure you asked in the discussion forum or in the related open issues first.",
+      "evidence": [
+        {
+          "repo": "celery/celery",
+          "path": ".github/PULL_REQUEST_TEMPLATE.md",
+          "line": 2,
+          "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/PULL_REQUEST_TEMPLATE.md?plain=1#L2",
+          "quote": "Before opening an AI based PR make sure you asked in the discussion forum or in the related open issues first."
+        }
+      ]
+    },
+    "assignment_required": {
+      "value": true,
+      "evidence": [
+        {
+          "repo": "celery/celery",
+          "path": "CONTRIBUTING.rst",
+          "line": 863,
+          "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/CONTRIBUTING.rst?plain=1#L863",
+          "quote": "If a test is not written, a label will be assigned to your PR with the name Needs Test Coverage."
+        },
+        {
+          "repo": "celery/celery",
+          "path": ".github/Agents.md",
+          "line": 48,
+          "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/Agents.md?plain=1#L48",
+          "quote": "- Similar comments on several issues asking to work on them or be assigned."
+        }
+      ]
+    },
+    "outside_prs": {
+      "value": "open",
+      "evidence": []
+    },
+    "pr_creation_policy": "all",
+    "anti_automation": [],
+    "attestations": [],
+    "agent_files": [
+      ".github/copilot-instructions.md"
+    ],
+    "sources": [
+      {
+        "repo": "celery/celery",
+        "path": "CONTRIBUTING.rst",
+        "kind": "contributing",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/CONTRIBUTING.rst?plain=1"
+      },
+      {
+        "repo": "celery/celery",
+        "path": "docs/contributing.rst",
+        "kind": "contributing",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/docs/contributing.rst?plain=1"
+      },
+      {
+        "repo": "celery/celery",
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "kind": "pr_template",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/PULL_REQUEST_TEMPLATE.md?plain=1"
+      },
+      {
+        "repo": "celery/celery",
+        "path": ".github/Agents.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/Agents.md?plain=1"
+      },
+      {
+        "repo": "celery/celery",
+        "path": ".github/copilot-instructions.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/.github/copilot-instructions.md?plain=1"
+      },
+      {
+        "repo": "celery/celery",
+        "path": "README.rst",
+        "kind": "readme",
+        "scope": "repo",
+        "url": "https://github.com/celery/celery/blob/6fcdbf904d410749ad7676d8ff6b1b25d6e19675/README.rst?plain=1"
       }
     ]
   },
@@ -10379,6 +10529,117 @@
     ]
   },
   {
+    "repo": "grafana/k6",
+    "url": "https://github.com/grafana/k6",
+    "description": "A modern load testing tool, using Go and JavaScript",
+    "stars": 32160,
+    "language": "Go",
+    "archived": false,
+    "checked": "2026-11-05",
+    "commit": "3bcb0da943fa39b5eb5922f02ad97d841b2a354d",
+    "ai_policy": {
+      "value": "not_stated",
+      "status": "auto",
+      "quote": null,
+      "evidence": []
+    },
+    "agent_prs": {
+      "value": "not_stated",
+      "status": "auto",
+      "quote": null,
+      "evidence": []
+    },
+    "cla": {
+      "value": true,
+      "evidence": [
+        {
+          "repo": "grafana/k6",
+          "path": "CONTRIBUTING.md",
+          "line": 33,
+          "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/CONTRIBUTING.md?plain=1#L33",
+          "quote": "Sign the Contributor License Agreement (the process is integrated with the pull request flow through cla-assistant.io)."
+        },
+        {
+          "repo": "grafana/k6",
+          "path": "",
+          "line": 0,
+          "url": "https://github.com/grafana/k6/pulls",
+          "quote": "check on recent PRs: license/cla"
+        }
+      ]
+    },
+    "dco": {
+      "value": null,
+      "evidence": []
+    },
+    "issue_first": {
+      "value": "for_larger_changes",
+      "status": "auto",
+      "quote": "Out of respect for your time, please start a discussion regarding any bigger contributions either in a GitHub Issue, in the community forums before you get…",
+      "evidence": [
+        {
+          "repo": "grafana/k6",
+          "path": "CONTRIBUTING.md",
+          "line": 25,
+          "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/CONTRIBUTING.md?plain=1#L25",
+          "quote": "Out of respect for your time, please start a discussion regarding any bigger contributions either in a GitHub Issue, in the community forums before you get…"
+        }
+      ]
+    },
+    "assignment_required": {
+      "value": null,
+      "evidence": []
+    },
+    "outside_prs": {
+      "value": "open",
+      "evidence": []
+    },
+    "pr_creation_policy": "all",
+    "anti_automation": [],
+    "attestations": [],
+    "agent_files": [
+      "AGENTS.md",
+      "CLAUDE.md"
+    ],
+    "sources": [
+      {
+        "repo": "grafana/k6",
+        "path": "CONTRIBUTING.md",
+        "kind": "contributing",
+        "scope": "repo",
+        "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/CONTRIBUTING.md?plain=1"
+      },
+      {
+        "repo": "grafana/k6",
+        "path": ".github/pull_request_template.md",
+        "kind": "pr_template",
+        "scope": "repo",
+        "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/.github/pull_request_template.md?plain=1"
+      },
+      {
+        "repo": "grafana/k6",
+        "path": "AGENTS.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/AGENTS.md?plain=1"
+      },
+      {
+        "repo": "grafana/k6",
+        "path": "CLAUDE.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/CLAUDE.md?plain=1"
+      },
+      {
+        "repo": "grafana/k6",
+        "path": "README.md",
+        "kind": "readme",
+        "scope": "repo",
+        "url": "https://github.com/grafana/k6/blob/3bcb0da943fa39b5eb5922f02ad97d841b2a354d/README.md?plain=1"
+      }
+    ]
+  },
+  {
     "repo": "grpc/grpc",
     "url": "https://github.com/grpc/grpc",
     "description": "C++ based gRPC (C++, Python, Ruby, Objective-C, PHP, C#)",
@@ -10603,6 +10864,100 @@
         "kind": "readme",
         "scope": "repo",
         "url": "https://github.com/grpc/grpc-rust/blob/c49f0d097b9a89778f9da293074aa3b706c3c176/README.md?plain=1"
+      }
+    ]
+  },
+  {
+    "repo": "harfbuzz/harfbuzz",
+    "url": "https://github.com/harfbuzz/harfbuzz",
+    "description": "HarfBuzz text shaping engine",
+    "stars": 6198,
+    "language": "C++",
+    "archived": false,
+    "checked": "2026-11-05",
+    "commit": "fcebeeba60f9e92c8b0e02c145420d74bc66229a",
+    "ai_policy": {
+      "value": "allowed_with_disclosure",
+      "status": "reviewed",
+      "quote": "- When AI tools contributed meaningfully to a change, add an Assisted-by: trailer to the commit message (e.g. Assisted-by: Claude).",
+      "evidence": [
+        {
+          "repo": "harfbuzz/harfbuzz",
+          "path": "CODE_OF_AI_CONDUCT.md",
+          "line": 29,
+          "url": "https://github.com/harfbuzz/harfbuzz/blob/fcebeeba60f9e92c8b0e02c145420d74bc66229a/CODE_OF_AI_CONDUCT.md?plain=1#L29",
+          "quote": "- When AI tools contributed meaningfully to a change, add an Assisted-by: trailer to the commit message (e.g. Assisted-by: Claude)."
+        }
+      ],
+      "note": "The Code of AI Conduct accepts AI-assisted contributions, with the contributor fully responsible end to end. Meaningful AI help takes an Assisted-by: trailer in the commit message, and the PR description must state what was verified locally — the exact commands run — and call out anything that was skipped or is uncertain.",
+      "review": {
+        "by": "claude-code",
+        "date": "2026-11-05"
+      }
+    },
+    "agent_prs": {
+      "value": "not_stated",
+      "status": "auto",
+      "quote": null,
+      "evidence": []
+    },
+    "cla": {
+      "value": null,
+      "evidence": []
+    },
+    "dco": {
+      "value": null,
+      "evidence": []
+    },
+    "issue_first": {
+      "value": "not_stated",
+      "status": "auto",
+      "quote": null,
+      "evidence": []
+    },
+    "assignment_required": {
+      "value": null,
+      "evidence": []
+    },
+    "outside_prs": {
+      "value": "open",
+      "evidence": []
+    },
+    "pr_creation_policy": "all",
+    "anti_automation": [],
+    "attestations": [],
+    "agent_files": [
+      "AGENTS.md",
+      "CLAUDE.md"
+    ],
+    "sources": [
+      {
+        "repo": "harfbuzz/harfbuzz",
+        "path": "CODE_OF_AI_CONDUCT.md",
+        "kind": "doc",
+        "scope": "extra",
+        "url": "https://github.com/harfbuzz/harfbuzz/blob/fcebeeba60f9e92c8b0e02c145420d74bc66229a/CODE_OF_AI_CONDUCT.md?plain=1"
+      },
+      {
+        "repo": "harfbuzz/harfbuzz",
+        "path": "AGENTS.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/harfbuzz/harfbuzz/blob/fcebeeba60f9e92c8b0e02c145420d74bc66229a/AGENTS.md?plain=1"
+      },
+      {
+        "repo": "harfbuzz/harfbuzz",
+        "path": "CLAUDE.md",
+        "kind": "agents",
+        "scope": "repo",
+        "url": "https://github.com/harfbuzz/harfbuzz/blob/fcebeeba60f9e92c8b0e02c145420d74bc66229a/CLAUDE.md?plain=1"
+      },
+      {
+        "repo": "harfbuzz/harfbuzz",
+        "path": "README.md",
+        "kind": "readme",
+        "scope": "repo",
+        "url": "https://github.com/harfbuzz/harfbuzz/blob/fcebeeba60f9e92c8b0e02c145420d74bc66229a/README.md?plain=1"
       }
     ]
   },
@@ -20802,8 +21157,9 @@
       ],
       "review": {
         "by": "claude-code",
-        "date": "2026-10-26"
-      }
+        "date": "2026-11-05"
+      },
+      "note": "The ICLA itself covers AI assistance (v1.1, clauses 8 and 9): disclose AI involvement, and a human must have reviewed the contribution before it is submitted."
     },
     "agent_prs": {
       "value": "not_stated",
@@ -31401,10 +31757,10 @@
           "quote": "- Keep issue and PR conversations human. Do not let an agent post comments, review replies, or triage messages on your behalf."
         }
       ],
-      "note": "Assisted-by trailer for substantial AI help (line 107); align with a maintainer before larger changes.",
+      "note": "Substantial AI help is disclosed with an Assisted-by: line in the PR description; AI trailers are banned from commit messages. Align with a maintainer before changes larger than a bug fix.",
       "review": {
         "by": "claude-code",
-        "date": "2026-10-26"
+        "date": "2026-11-05"
       }
     },
     "agent_prs": {

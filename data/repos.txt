@@ -205,6 +205,7 @@ jdx/mise                                         # seed, Rust, 35360★
 fish-shell/fish-shell                            # seed, Rust, 34342★
 swc-project/swc                                  # seed, Rust, 34202★
 numpy/numpy                                      # seed, Python, 33130★
+grafana/k6                                       # seed, Go, 32160★
 atuinsh/atuin                                    # seed, Rust, 32074★
 iced-rs/iced                                     # seed, Rust, 31831★
 emilk/egui                                       # seed, Rust, 31747★
@@ -212,6 +213,7 @@ vercel/turborepo                                 # seed, Rust, 31251★
 openssl/openssl                                  # seed, C, 31059★
 wezterm/wezterm                                  # seed, Rust, 29341★
 sharkdp/hyperfine                                # seed, Rust, 29152★
+celery/celery                                    # seed, Python, 29136★
 tj/commander.js                                  # seed, JavaScript, 28438★
 tree-sitter/tree-sitter                          # seed, Rust, 27282★
 NixOS/nixpkgs                                    # seed, Nix, 26608★
@@ -295,6 +297,7 @@ nodeca/js-yaml                                   # seed, TypeScript, 6637★
 DavidAnson/markdownlint                          # seed, JavaScript, 6394★
 Nukesor/pueue                                    # seed, Rust, 6390★
 sigstore/cosign                                  # seed, Go, 6385★
+harfbuzz/harfbuzz                                # seed, C++, 6198★
 vavr-io/vavr                                     # seed, Java, 6181★
 image-rs/image                                   # seed, Rust, 5896★
 holoviz/panel                                    # seed, Python, 5803★
